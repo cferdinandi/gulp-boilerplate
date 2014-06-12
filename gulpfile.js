@@ -17,12 +17,12 @@ var package = require('./package.json');
 var paths = {
 	output : 'dist/',
 	scripts : {
-		input: [ 'src/**/*.js' ],
-		output: 'dist/js/'
+		input: [ 'js/components/**/*.js' ],
+		output: 'js/'
 	},
 	styles : {
-		input: 'src/**/*.scss',
-		output: 'dist/css/'
+		input: 'sass/**/*.scss',
+		output: 'css/'
 	},
 	test: [ 'test/spec/**/*.js' ]
 };
