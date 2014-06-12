@@ -1,0 +1,8 @@
+# Node
+node_modules
+
+## OS X
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
