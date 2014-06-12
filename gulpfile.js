@@ -39,9 +39,9 @@ var banner =
 
 var bannerMin =
 	'/**' +
-	' <%= package.name %> v<%= package.version %>, by Chris Ferdinandi.' +
-	' <%= package.repository.url %>.' +
-	' Licensed under MIT: http://gomakethings.com/mit/.' +
+	' <%= package.name %> v<%= package.version %>, by Chris Ferdinandi' +
+	' | <%= package.repository.url %>' +
+	' | Licensed under MIT: http://gomakethings.com/mit/' +
 	' */\n';
 
 gulp.task('scripts', ['clean'], function() {
