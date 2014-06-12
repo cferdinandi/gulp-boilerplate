@@ -42,4 +42,4 @@ var paths = {
 
 Change the name, version, URL and other data about the project in `package.json`. `myplugin.js` is my UMD boilerplate. Rename `root.MyPlugin` to suit your project. Inside `spec-myproject.js` is an example `describe()` to setup the first [Jasmine](http://jasmine.github.io) unit test.
 
-In bash/terminal/command line, run `npm install`, then `gulp` to get going.
+In bash/terminal/command line, `cd` into your project directory and run `npm install`, then `gulp` to get going.
