@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var clean = require('gulp-clean');
 var rename = require('gulp-rename');
+var flatten = require('gulp-flatten');
 var header = require('gulp-header');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
@@ -20,7 +21,7 @@ var paths = {
 		output: 'dist/js/'
 	},
 	styles : {
-		input: 'src/sass/*.scss',
+		input: 'src/**/*.scss',
 		output: 'dist/css/'
 	},
 	test: [ 'test/spec/**/*.js' ]
@@ -46,6 +47,7 @@ var bannerMin =
 gulp.task('scripts', ['clean'], function() {
 	return gulp.src(paths.scripts.input)
 		.pipe(plumber())
+		.pipe(flatten())
 		.pipe(concat('main.js'))
 		.pipe(header(banner, { package : package }))
 		.pipe(gulp.dest(paths.scripts.output))
@@ -59,6 +61,7 @@ gulp.task('styles', ['clean'], function() {
 	return gulp.src(paths.styles.input)
 		.pipe(plumber())
 		.pipe(sass())
+		.pipe(flatten())
 		.pipe(prefix('last 2 version', '> 1%'))
 		.pipe(header(banner, { package : package }))
 		.pipe(gulp.dest(paths.styles.output))
