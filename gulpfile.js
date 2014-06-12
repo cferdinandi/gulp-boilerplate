@@ -15,7 +15,6 @@ var karma = require('gulp-karma');
 var package = require('./package.json');
 
 var paths = {
-	output : 'dist/',
 	scripts : {
 		input: [ 'js/components/**/*.js' ],
 		output: 'js/'
@@ -79,7 +78,11 @@ gulp.task('lint', function () {
 });
 
 gulp.task('clean', function () {
-	return gulp.src(paths.output, { read: false })
+	return gulp.src([
+			paths.scripts.output + 'main.js',
+			paths.scripts.output + 'main.min.js',
+			paths.styles.output
+		], { read: false })
 		.pipe(plumber())
 		.pipe(clean());
 });

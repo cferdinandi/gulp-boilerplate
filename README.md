@@ -5,9 +5,8 @@ My boilerplate for creating new web projects with [Gulp.js](http://gulpjs.com/).
 * Provides a [UMD](https://github.com/umdjs/umd) wrapper for JavaScript modules, `myplugin.js` (rename to suit)
 * Lints `src/**/*.js`
 * Adds a copyright banner to outputted files, configurable
-* Concatenates `*.js` files into a single `main.js` file
-* Compiles a `*.js` and `*.min.js` version of the `src/**/*.js` files
-* Compiles a `*.css` and `*.min.css` version of the `src/**/*.scss` files
+* Concatentates and compiles `*.js` and `*.min.js` versions of the `js/components/**/*.js` files
+* Compiles `*.css` and `*.min.css` versions of the `sass/**/*.scss` files
 * [Autoprefixes](https://github.com/ai/autoprefixer) all styles with vendor prefixes as needed
 * Cleans the `dist` directory each time files compiled
 * Boots a Karma server, runs Jasmine unit tests on `src/**/*.js` files
