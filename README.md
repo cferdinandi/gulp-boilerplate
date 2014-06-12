@@ -1,8 +1,6 @@
 # Gulp Boilerplate [![Build Status](https://travis-ci.org/cferdinandi/gulp-boilerplate.svg)](https://travis-ci.org/cferdinandi/gulp-boilerplate)
 
-My [Gulp.js](http://gulpjs.com/) boilerplate for creating new web projects. Forked from [Todd Motto's GulpOSS](https://github.com/toddmotto/gulp-oss) with some additions from [Mark Goodyear and Big Bite Creative](https://github.com/bigbitecreative/base). Use if you will, if so here's a brief intro as to what it does.
-
-This boilerplate does the following:
+My [Gulp.js](http://gulpjs.com/) boilerplate for creating new web projects. Forked from [Todd Motto's GulpOSS](https://github.com/toddmotto/gulp-oss) with some additions from [Mark Goodyear and Big Bite Creative](https://github.com/bigbitecreative/base).
 
 * Provides a [UMD](https://github.com/umdjs/umd) wrapper for JavaScript modules, `myplugin.js` (rename to suit)
 * Lints `src/**/*.js`
