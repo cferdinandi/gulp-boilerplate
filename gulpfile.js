@@ -23,7 +23,10 @@ var paths = {
 		input: 'sass/**/*.scss',
 		output: 'css/'
 	},
-	test: [ 'test/spec/**/*.js' ]
+	test: {
+		spec: [ 'test/spec/**/*.js' ],
+		results: 'http://gomakethings.com'
+	}
 };
 
 var banner =
@@ -88,7 +91,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('test', function() {
-	return gulp.src(paths.scripts.input.concat(paths.test))
+	return gulp.src(paths.scripts.input.concat(paths.test.spec))
 		.pipe(plumber())
 		.pipe(karma({ configFile: 'test/karma.conf.js' }))
 		.on('error', function(err) { throw err; });
