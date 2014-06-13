@@ -15,17 +15,19 @@ var karma = require('gulp-karma');
 var package = require('./package.json');
 
 var paths = {
+	output : 'dist/',
 	scripts : {
-		input: [ 'js/components/**/*.js' ],
-		output: 'js/'
+		input : [ 'src/js/**/*.js' ],
+		output : 'dist/js/'
 	},
 	styles : {
-		input: 'sass/**/*.scss',
-		output: 'css/'
+		input : 'src/sass/**/*.scss',
+		output : 'dist/css/'
 	},
-	test: {
-		spec: [ 'test/spec/**/*.js' ],
-		results: 'http://gomakethings.com'
+	test : {
+		spec : [ 'test/spec/**/*.js' ],
+		coverage: 'test/coverage/',
+		results: 'test/results/'
 	}
 };
 
@@ -82,9 +84,9 @@ gulp.task('lint', function () {
 
 gulp.task('clean', function () {
 	return gulp.src([
-			paths.scripts.output + 'main.js',
-			paths.scripts.output + 'main.min.js',
-			paths.styles.output
+				paths.output,
+				paths.test.coverage,
+				paths.test.results
 		], { read: false })
 		.pipe(plumber())
 		.pipe(clean());

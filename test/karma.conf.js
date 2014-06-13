@@ -13,7 +13,7 @@ module.exports = function (config) {
 		],
 		reporters : ['spec', 'coverage', 'html'],
 		preprocessors: {
-			'../js/**/*.js': 'coverage'
+			'../src/js/**/*.js': 'coverage'
 		},
 		coverageReporter: {
 			type : 'html',
