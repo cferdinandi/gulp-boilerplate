@@ -52,10 +52,10 @@ gulp.task('scripts', ['clean'], function() {
 	return gulp.src(paths.scripts.input)
 		.pipe(plumber())
 		.pipe(flatten())
-		.pipe(concat('main.js'))
+		.pipe(concat( 'main.js'))
 		.pipe(header(banner, { package : package }))
 		.pipe(gulp.dest(paths.scripts.output))
-		.pipe(rename({ suffix: '.min' }))
+		.pipe(rename({ suffix: '.min.' + Date.now() }))
 		.pipe(uglify())
 		.pipe(header(bannerMin, { package : package }))
 		.pipe(gulp.dest(paths.scripts.output));
@@ -69,7 +69,7 @@ gulp.task('styles', ['clean'], function() {
 		.pipe(prefix('last 2 version', '> 1%'))
 		.pipe(header(banner, { package : package }))
 		.pipe(gulp.dest(paths.styles.output))
-		.pipe(rename({ suffix: '.min' }))
+		.pipe(rename({ suffix: '.min.' + Date.now() }))
 		.pipe(minify())
 		.pipe(header(bannerMin, { package : package }))
 		.pipe(gulp.dest(paths.styles.output));
