@@ -32,33 +32,34 @@ var paths = {
 	}
 };
 
-var banner =
-	'/**\n' +
-	' * <%= package.name %> v<%= package.version %>\n' +
-	' * <%= package.description %>, by <%= package.author.name %>.\n' +
-	' * <%= package.repository.url %>\n' +
-	' * \n' +
-	' * Free to use under the MIT License.\n' +
-	' * http://gomakethings.com/mit/\n' +
-	' */\n\n';
-
-var bannerMin =
-	'/**' +
-	' <%= package.name %> v<%= package.version %>, by Chris Ferdinandi' +
-	' | <%= package.repository.url %>' +
-	' | Licensed under MIT: http://gomakethings.com/mit/' +
-	' */\n';
+var banner = {
+	full :
+		'/**\n' +
+		' * <%= package.name %> v<%= package.version %>\n' +
+		' * <%= package.description %>, by <%= package.author.name %>.\n' +
+		' * <%= package.repository.url %>\n' +
+		' * \n' +
+		' * Free to use under the MIT License.\n' +
+		' * http://gomakethings.com/mit/\n' +
+		' */\n\n',
+	min :
+		'/**' +
+		' <%= package.name %> v<%= package.version %>, by Chris Ferdinandi' +
+		' | <%= package.repository.url %>' +
+		' | Licensed under MIT: http://gomakethings.com/mit/' +
+		' */\n'
+};
 
 gulp.task('scripts', ['clean'], function() {
 	return gulp.src(paths.scripts.input)
 		.pipe(plumber())
 		.pipe(flatten())
 		.pipe(concat('main.js'))
-		.pipe(header(banner, { package : package }))
+		.pipe(header(banner.full, { package : package }))
 		.pipe(gulp.dest(paths.scripts.output))
 		.pipe(rename({ suffix: '.min.' + Date.now() }))
 		.pipe(uglify())
-		.pipe(header(bannerMin, { package : package }))
+		.pipe(header(banner.min, { package : package }))
 		.pipe(gulp.dest(paths.scripts.output));
 });
 
@@ -68,11 +69,11 @@ gulp.task('styles', ['clean'], function() {
 		.pipe(sass())
 		.pipe(flatten())
 		.pipe(prefix('last 2 version', '> 1%'))
-		.pipe(header(banner, { package : package }))
+		.pipe(header(banner.full, { package : package }))
 		.pipe(gulp.dest(paths.styles.output))
 		.pipe(rename({ suffix: '.min.' + Date.now() }))
 		.pipe(minify())
-		.pipe(header(bannerMin, { package : package }))
+		.pipe(header(banner.min, { package : package }))
 		.pipe(gulp.dest(paths.styles.output));
 });
 
