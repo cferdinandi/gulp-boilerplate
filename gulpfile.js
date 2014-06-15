@@ -53,7 +53,7 @@ gulp.task('scripts', ['clean'], function() {
 	return gulp.src(paths.scripts.input)
 		.pipe(plumber())
 		.pipe(flatten())
-		.pipe(concat( 'main.js'))
+		.pipe(concat('main.js'))
 		.pipe(header(banner, { package : package }))
 		.pipe(gulp.dest(paths.scripts.output))
 		.pipe(rename({ suffix: '.min.' + Date.now() }))
