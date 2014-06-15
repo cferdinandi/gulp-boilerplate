@@ -24,6 +24,7 @@ var paths = {
 		input : 'src/sass/**/*.scss',
 		output : 'dist/css/'
 	},
+	static : 'src/static/**',
 	test : {
 		spec : [ 'test/spec/**/*.js' ],
 		coverage: 'test/coverage/',
@@ -75,6 +76,12 @@ gulp.task('styles', ['clean'], function() {
 		.pipe(gulp.dest(paths.styles.output));
 });
 
+gulp.task('static', ['clean'], function() {
+	return gulp.src(paths.static)
+		.pipe(plumber())
+		.pipe(gulp.dest(paths.output));
+});
+
 gulp.task('lint', function () {
 	return gulp.src(paths.scripts.input)
 		.pipe(plumber())
@@ -104,5 +111,6 @@ gulp.task('default', [
 	'clean',
 	'scripts',
 	'styles',
+	'static',
 	'test'
 ]);
