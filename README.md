@@ -5,6 +5,7 @@ My boilerplate for creating new web projects with [Gulp.js](http://gulpjs.com/).
 * Lints and concatenates JS files.
 * Compiles Sass files and automatically [adds vendor prefixes](https://github.com/ai/autoprefixer).
 * Exports both minified and expanded JS and CSS files.
+* Adds a time stamp to `.min` files for cache busting.
 * Cleans up file directories.
 * Adds a header to the top of all JS and CSS files.
 * Runs Jasmine unit tests and generates reports.
@@ -53,6 +54,8 @@ gulp-boilerplate/
 |   |   |-- myplugin.js
 |   |-- sass/
 |   |   |-- myplugin.sass
+|   |-- static/
+|   |   |-- # Files that don't need processing
 |-- test/
 |   |-- coverage/
 |   |   |-- various files
@@ -92,6 +95,7 @@ var paths = {
 		input : 'src/sass/**/*.scss',
 		output : 'dist/css/'
 	},
+	static : 'src/static/**',
 	test : {
 		spec : [ 'test/spec/**/*.js' ],
 		coverage: 'test/coverage/',
@@ -116,6 +120,10 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 ## Changelog
 
+* v0.0.3 - June 15, 2014
+	* Converted header banner to an object.
+	* Added timestamp to minified file names for cache busting.
+	* Added `static` folder for static assets.
 * v0.0.2 - June 12, 2014
 	* Added coverage reporting and an HTML unit test report.
 	* Added Sass support.
