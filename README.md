@@ -49,13 +49,15 @@ gulp-boilerplate/
 |   |-- css/
 |   |   |-- myplugin.css
 |   |   |-- myplugin.min.css
+|   |-- static/
+|   |   |-- # static assets
 |-- src/
 |   |-- js/
 |   |   |-- myplugin.js
 |   |-- sass/
 |   |   |-- myplugin.sass
 |   |-- static/
-|   |   |-- # Files that don't need processing
+|   |   |-- # static assets
 |-- test/
 |   |-- coverage/
 |   |   |-- various files
