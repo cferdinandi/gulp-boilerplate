@@ -12,12 +12,15 @@ var sass = require('gulp-sass');
 var prefix = require('gulp-autoprefixer');
 var minify = require('gulp-minify-css');
 var karma = require('gulp-karma');
+var tap = require('gulp-tap');
+var match = require('gulp-match');
+var debug = require('gulp-debug');
 var package = require('./package.json');
 
 var paths = {
 	output : 'dist/',
 	scripts : {
-		input : [ 'src/js/**/*.js' ],
+		input : [ 'src/js/*' ],
 		output : 'dist/js/'
 	},
 	styles : {
@@ -54,7 +57,14 @@ gulp.task('scripts', ['clean'], function() {
 	return gulp.src(paths.scripts.input)
 		.pipe(plumber())
 		.pipe(flatten())
-		.pipe(concat('main.js'))
+		.pipe(tap(function (file, t) {
+			if ( file.stat.isDirectory() ) {
+				var name = file.relative + '.js';
+				return gulp.src(file.path + '/*.js')
+					.pipe(concat(name));
+
+			}
+		}))
 		.pipe(header(banner.full, { package : package }))
 		.pipe(gulp.dest(paths.scripts.output))
 		.pipe(rename({ suffix: '.min.' + Date.now() }))
