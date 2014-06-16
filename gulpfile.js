@@ -3,6 +3,7 @@ var plumber = require('gulp-plumber');
 var clean = require('gulp-clean');
 var rename = require('gulp-rename');
 var flatten = require('gulp-flatten');
+var tap = require('gulp-tap');
 var header = require('gulp-header');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
@@ -17,7 +18,7 @@ var package = require('./package.json');
 var paths = {
 	output : 'dist/',
 	scripts : {
-		input : [ 'src/js/**/*.js' ],
+		input : [ 'src/js/*' ],
 		output : 'dist/js/'
 	},
 	styles : {
@@ -54,7 +55,19 @@ gulp.task('scripts', ['clean'], function() {
 	return gulp.src(paths.scripts.input)
 		.pipe(plumber())
 		.pipe(flatten())
-		.pipe(concat('main.js'))
+		.pipe(tap(function (file, t) {
+			if ( file.stat.isDirectory() ) {
+				var name = file.relative + '.js';
+				return gulp.src(file.path + '/*.js')
+					.pipe(concat(name))
+					.pipe(header(banner.full, { package : package }))
+					.pipe(gulp.dest(paths.scripts.output))
+					.pipe(rename({ suffix: '.min.' + Date.now() }))
+					.pipe(uglify())
+					.pipe(header(banner.min, { package : package }))
+					.pipe(gulp.dest(paths.scripts.output));
+			}
+		}))
 		.pipe(header(banner.full, { package : package }))
 		.pipe(gulp.dest(paths.scripts.output))
 		.pipe(rename({ suffix: '.min.' + Date.now() }))
