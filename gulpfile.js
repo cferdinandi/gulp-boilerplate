@@ -3,6 +3,7 @@ var plumber = require('gulp-plumber');
 var clean = require('gulp-clean');
 var rename = require('gulp-rename');
 var flatten = require('gulp-flatten');
+var tap = require('gulp-tap');
 var header = require('gulp-header');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
@@ -12,9 +13,6 @@ var sass = require('gulp-sass');
 var prefix = require('gulp-autoprefixer');
 var minify = require('gulp-minify-css');
 var karma = require('gulp-karma');
-var tap = require('gulp-tap');
-var match = require('gulp-match');
-var debug = require('gulp-debug');
 var package = require('./package.json');
 
 var paths = {
@@ -61,8 +59,13 @@ gulp.task('scripts', ['clean'], function() {
 			if ( file.stat.isDirectory() ) {
 				var name = file.relative + '.js';
 				return gulp.src(file.path + '/*.js')
-					.pipe(concat(name));
-
+					.pipe(concat(name))
+					.pipe(header(banner.full, { package : package }))
+					.pipe(gulp.dest(paths.scripts.output))
+					.pipe(rename({ suffix: '.min.' + Date.now() }))
+					.pipe(uglify())
+					.pipe(header(banner.min, { package : package }))
+					.pipe(gulp.dest(paths.scripts.output));
 			}
 		}))
 		.pipe(header(banner.full, { package : package }))

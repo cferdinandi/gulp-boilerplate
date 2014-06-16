@@ -40,6 +40,8 @@ Every time you want to run your tasks, run `gulp`.
 
 ### File Structure
 
+Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into the `dist` directory. Subdirectory content under the `js` folder will be concatenated into a single file named after the subdirectory. (For example, files in `js/detects` will compile into `detects.js`.) Files directly under `js` will compile individually.
+
 ```
 gulp-boilerplate/
 |-- dist/
@@ -75,22 +77,19 @@ gulp-boilerplate/
 ## Options and Settings
 
 ### Updating Project Details
-
 Open up `package.json` to change the name, version, URL and other data about the project.
 
 ### Changing the Header
-
 Inside `gulpfile.js`, `banner` is the expanded header, while `bannerMin` is included with minified content.
 
 ### Changing the Directory Structure
-
 Inside `gulpfile.js` you'll see a variable named `paths`. Adjust the paths to suit your workflow.
 
 ```js
 var paths = {
 	output : 'dist/',
 	scripts : {
-		input : [ 'src/js/**/*.js' ],
+		input : [ 'src/js/*' ],
 		output : 'dist/js/'
 	},
 	styles : {
@@ -122,6 +121,8 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 ## Changelog
 
+* v0.0.4 - June 16, 2014
+	* Added ability to concatenate `src/js` subdirectories.
 * v0.0.3 - June 15, 2014
 	* Converted header banner to an object.
 	* Added timestamp to minified file names for cache busting.
