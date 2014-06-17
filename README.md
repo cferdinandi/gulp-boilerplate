@@ -40,36 +40,36 @@ Every time you want to run your tasks, run `gulp`.
 
 ### File Structure
 
-Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into the `dist` directory. Content in subdirectories under the `js` folder will be concatenated. (For example, files in `js/detects` will compile into `detects.js`.) Files directly under `js` will compile individually.
+Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into `dist`. Content in subdirectories under the `js` folder will be concatenated. (For example, files in `js/detects` will compile into `detects.js`.) Files directly under `js` will compile individually.
 
 ```
 gulp-boilerplate/
-|-- dist/
-|   |-- js/
-|   |   |-- myplugin.js
-|   |   |-- myplugin.min.js
-|   |-- css/
-|   |   |-- myplugin.css
-|   |   |-- myplugin.min.css
-|   |-- static/
-|   |   |-- # static assets
-|-- src/
-|   |-- js/
-|   |   |-- myplugin.js
-|   |-- sass/
-|   |   |-- myplugin.sass
-|   |-- static/
-|   |   |-- # static assets
-|-- test/
-|   |-- coverage/
-|   |   |-- various files
-|   |-- results/
-|   |   |-- unit-tests.html
-|   |-- spec/
-|   |   |-- spec-myplugin.js
-|-- gulfile.js
-|-- package.json
-|-- README.md
+|—— dist/
+|   |—— js/
+|   |   |—— myplugin.js
+|   |   |—— myplugin.min.js
+|   |—— css/
+|   |   |—— myplugin.css
+|   |   |—— myplugin.min.css
+|   |—— static/
+|   |   |—— # static assets
+|—— src/
+|   |—— js/
+|   |   |—— myplugin.js
+|   |—— sass/
+|   |   |—— myplugin.sass
+|   |—— static/
+|   |   |—— # static assets
+|—— test/
+|   |—— coverage/
+|   |   |—— various files
+|   |—— results/
+|   |   |—— unit-tests.html
+|   |—— spec/
+|   |   |—— spec-myplugin.js
+|—— gulfile.js
+|—— package.json
+|—— README.md
 ```
 
 
@@ -80,7 +80,7 @@ gulp-boilerplate/
 Open up `package.json` to change the name, version, URL and other data about the project.
 
 ### Changing the Header
-Inside `gulpfile.js`, `banner` is the expanded header, while `bannerMin` is included with minified content.
+Inside `gulpfile.js`, `banner.full` is the expanded header, while `banner.min` is included with minified content.
 
 ### Changing the Directory Structure
 Inside `gulpfile.js` you'll see a variable named `paths`. Adjust the paths to suit your workflow.
