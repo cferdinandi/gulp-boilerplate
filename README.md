@@ -40,7 +40,7 @@ Every time you want to run your tasks, run `gulp`.
 
 ### File Structure
 
-Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into the `dist` directory. Subdirectory content under the `js` folder will be concatenated into a single file named after the subdirectory. (For example, files in `js/detects` will compile into `detects.js`.) Files directly under `js` will compile individually.
+Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into the `dist` directory. Content in subdirectories under the `js` folder will be concatenated. (For example, files in `js/detects` will compile into `detects.js`.) Files directly under `js` will compile individually.
 
 ```
 gulp-boilerplate/
