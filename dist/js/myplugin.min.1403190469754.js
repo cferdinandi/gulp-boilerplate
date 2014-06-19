@@ -1,0 +1,2 @@
+/** gulp-boilerplate v0.0.5, by Chris Ferdinandi | http://github.com/cferdinandi/Plugin | Licensed under MIT: http://gomakethings.com/mit/ */
+!function(e,n){"function"==typeof define&&define.amd?define("MyPlugin",n(e)):"object"==typeof exports?module.exports=n(e):e.MyPlugin=n(e)}(this,function(e){"use strict";{var n={};!!document.querySelector&&!!e.addEventListener}return n.init=function(){},n});
