@@ -76,7 +76,7 @@ describe('My module', function () {
 		});
 
 		it('Document should include the myPlugin module', function () {
-			expect(!!houdini).toBe(true);
+			expect(!!MyPlugin).toBe(true);
 		});
 
 	});
