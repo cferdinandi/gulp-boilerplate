@@ -121,6 +121,8 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 ## Changelog
 
+* v0.1.0 - June 26, 2014
+	* Added helper functions to the unit test spec.
 * v0.0.5 - June 19, 2014
 	* Fixed factory/root/UMD definition.
 * v0.0.4 - June 16, 2014
