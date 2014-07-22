@@ -5,7 +5,6 @@ My boilerplate for creating new web projects with [Gulp.js](http://gulpjs.com/).
 * Lints and concatenates JS files.
 * Compiles Sass files and automatically [adds vendor prefixes](https://github.com/ai/autoprefixer).
 * Exports both minified and expanded JS and CSS files.
-* Adds a time stamp to `.min` files for cache busting.
 * Cleans up file directories.
 * Adds a header to the top of all JS and CSS files.
 * Runs Jasmine unit tests and generates reports.
@@ -121,6 +120,9 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 ## Changelog
 
+* v0.2.1 - July 21, 2014
+	* Updated `getDataOptions` method to use JSON.
+	* Removed auto-dating from minified files.
 * v0.1.0 - June 26, 2014
 	* Added helper functions to the unit test spec.
 * v0.0.5 - June 19, 2014
