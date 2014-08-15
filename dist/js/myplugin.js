@@ -1,5 +1,5 @@
 /**
- * gulp-boilerplate v0.2.2
+ * gulp-boilerplate v0.2.3
  * My Gulp.js boilerplate for creating new web projects, by Chris Ferdinandi.
  * http://github.com/cferdinandi/Plugin
  * 
@@ -23,7 +23,7 @@
 	// Variables
 	//
 
-	var exports = {}; // Object for public APIs
+	var myPlugin = {}; // Object for public APIs
 	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
 
 	// Default settings
@@ -93,7 +93,7 @@
 	 * Destroy the current initialization.
 	 * @public
 	 */
-	exports.destroy = function () {
+	myPlugin.destroy = function () {
 		// @todo Undo init...
 	};
 
@@ -102,7 +102,7 @@
 	 * @public
 	 * @param {Object} options User settings
 	 */
-	exports.init = function ( options ) {
+	myPlugin.init = function ( options ) {
 
 		// feature test
 		if ( !supports ) return;
@@ -116,6 +116,6 @@
 	// Public APIs
 	//
 
-	return exports;
+	return myPlugin;
 
 });
