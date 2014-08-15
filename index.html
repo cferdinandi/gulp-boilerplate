@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>MyPlugin</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- A basic responsive reset -->
+	<style>
+		@-webkit-viewport { width: device-width; zoom: 1.0; }
+		   @-moz-viewport { width: device-width; zoom: 1.0; }
+			@-ms-viewport { width: device-width; zoom: 1.0; }
+			 @-o-viewport { width: device-width; zoom: 1.0; }
+				@viewport { width: device-width; zoom: 1.0; }
+
+		html { overflow-y: auto; }
+
+		img, audio, video, canvas { max-width: 100%; }
+
+		/*  Sets body width */
+		.container {
+			max-width: 40em;
+			width: 88%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+
+	<!-- stylesheets -->
+	<link rel="stylesheet" href="dist/css/myplugin.css" type="text/css">
+
+	<!-- HTML5 Shim for IE -->
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<section class="container">
+
+		<h1 style="text-align: center; font-size: 3em; margin-bottom: 0;">MyPlugin</h1>
+		<p style="text-align: center; font-size: 1.5em; margin: 0;">description</p>
+		<p style="text-align: center;"><a href="https://github.com/yourname/myplugin">MyPlugin on GitHub</a></p>
+
+
+
+	</section>
+
+
+	<!-- Javascript -->
+	<script src="dist/js/classList.js"></script>
+	<script src="dist/js/bind-polyfill.js"></script>
+	<script src="dist/js/myplugin.js"></script>
+	<script>
+		myplugin.init();
+	</script>
+
+</body>
+</html>
