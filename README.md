@@ -125,6 +125,10 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 Gulp Boilerplate uses [semantic versioning](http://semver.org/).
 
+* v0.4.0 - August 15, 2014
+	* Added `STARTER-README.MD`.
+	* Added `index.html` template.
+	* Added placeholders for variables, settings extending, and other methods.
 * v0.3.0 - August 15, 2014
 	* Updated path with testing path for scripts.
 	* Switched to Ruby Sass for better compatibility with Sass 3.x features.

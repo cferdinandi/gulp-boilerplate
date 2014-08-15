@@ -1,5 +1,5 @@
 /**
- * gulp-boilerplate v0.3.0
+ * gulp-boilerplate v0.4.0
  * My Gulp.js boilerplate for creating new web projects, by Chris Ferdinandi.
  * http://github.com/cferdinandi/Plugin
  * 
@@ -25,6 +25,8 @@
 
 	var myPlugin = {}; // Object for public APIs
 	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
+	var eventListeners = []; //Listeners array
+	var settings, ELEMENTS, eventTimeout;
 
 	// Default settings
 	var defaults = {
@@ -96,7 +98,40 @@
 	 * @public
 	 */
 	myPlugin.destroy = function () {
-		// @todo Undo init...
+
+		if ( !settings ) return;
+
+		// @todo Undo init functions...
+
+		// Remove event listeners
+		if ( ELEMENTS ) {
+			forEach( ELEMENTS, function ( elem, index ) {
+				elem.removeEventListener( 'click', eventListeners[index], false );
+			});
+			eventListeners = [];
+		}
+
+		// Reset variables
+		settings = null;
+		ELEMENTS = null;
+		eventTimeout = null;
+
+	};
+
+	/**
+	 * On window scroll and resize, only run events at a rate of 15fps for better performance
+	 * @private
+	 * @param  {Function} eventTimeout Timeout function
+	 * @param  {TBD} ELEMENTS Some element, nodelist, or other variable to pass in
+	 * @param  {Object} settings
+	 */
+	var eventThrottler = function ( eventTimeout, ELEMENTS, settings ) {
+		if ( !eventTimeout ) {
+			eventTimeout = setTimeout(function() {
+				eventTimeout = null;
+				setWrapHeight( wrap, footer, settings );
+			}, 66);
+		}
 	};
 
 	/**
@@ -109,7 +144,20 @@
 		// feature test
 		if ( !supports ) return;
 
+		// Destroy any existing initializations
+		myPlugin.destroy();
+
+		// Selectors and variables
+		settings = extend( defaults, options || {} ); // Merge user options with defaults
+		ELEMENTS = document.querySelectorAll('[data-ELEM]'); // Set your variable here
+
 		// @todo Do something...
+
+		// Assigns event listeners to an array so they can be programatically destroyed
+		forEach(ELEMENTS, function (elem, index) {
+			eventListeners[index] = myPlugin.METHOD.bind( null, elem, ELEMENTSS, settings );
+			elem.addEventListener('click', eventListeners[index], false);
+		});
 
 	};
 
