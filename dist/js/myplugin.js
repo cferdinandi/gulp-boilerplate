@@ -1,5 +1,5 @@
 /**
- * gulp-boilerplate v0.2.3
+ * gulp-boilerplate v0.3.0
  * My Gulp.js boilerplate for creating new web projects, by Chris Ferdinandi.
  * http://github.com/cferdinandi/Plugin
  * 
@@ -29,8 +29,10 @@
 	// Default settings
 	var defaults = {
 		someVar: 123,
-		callbackBefore: function () {},
-		callbackAfter: function () {}
+		callbacks: {
+			before: function () {},
+			after: function () {}
+		}
 	};
 
 

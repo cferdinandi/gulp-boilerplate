@@ -67,6 +67,7 @@ gulp-boilerplate/
 |   |   |—— unit-tests.html
 |   |—— spec/
 |   |   |—— spec-myplugin.js
+|—— .travis.yml
 |—— gulfile.js
 |—— package.json
 |—— README.md
@@ -98,6 +99,7 @@ var paths = {
 	},
 	static : 'src/static/**',
 	test : {
+		input : [ 'src/js/**/*.js' ],
 		spec : [ 'test/spec/**/*.js' ],
 		coverage: 'test/coverage/',
 		results: 'test/results/'
@@ -121,6 +123,12 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 ## Changelog
 
+Gulp Boilerplate uses [semantic versioning](http://semver.org/).
+
+* v0.3.0 - August 15, 2014
+	* Updated path with testing path for scripts.
+	* Switched to Ruby Sass for better compatibility with Sass 3.x features.
+	* Updated callback structure.
 * v0.2.3 - August 15, 2014
 	* Added fix for UMD structure.
 * v0.2.2 - August 8, 2014

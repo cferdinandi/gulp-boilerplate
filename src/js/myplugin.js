@@ -20,8 +20,10 @@
 	// Default settings
 	var defaults = {
 		someVar: 123,
-		callbackBefore: function () {},
-		callbackAfter: function () {}
+		callbacks: {
+			before: function () {},
+			after: function () {}
+		}
 	};
 
 
