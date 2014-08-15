@@ -25,9 +25,10 @@ My boilerplate for creating new web projects with [Gulp.js](http://gulpjs.com/).
 ### Dependencies
 Make sure these are installed first.
 
-* [PhantomJS](http://phantomjs.org)
 * [Node.js](http://nodejs.org)
+* [Ruby Sass](http://sass-lang.com/install)
 * [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
+* [PhantomJS](http://phantomjs.org)
 
 ### Quick Start
 

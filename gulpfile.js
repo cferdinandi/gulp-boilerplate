@@ -9,7 +9,7 @@ var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var sass = require('gulp-sass');
+var sass = require('gulp-ruby-sass');
 var prefix = require('gulp-autoprefixer');
 var minify = require('gulp-minify-css');
 var karma = require('gulp-karma');
@@ -19,7 +19,8 @@ var paths = {
 	output : 'dist/',
 	scripts : {
 		input : [ 'src/js/*' ],
-		output : 'dist/js/'
+		output : 'dist/js/',
+		test : [ 'src/js/**/*.js' ]
 	},
 	styles : {
 		input : 'src/sass/**/*.scss',
@@ -114,7 +115,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('test', function() {
-	return gulp.src(paths.scripts.input.concat(paths.test.spec))
+	return gulp.src(paths.scripts.test.concat(paths.test.spec))
 		.pipe(plumber())
 		.pipe(karma({ configFile: 'test/karma.conf.js' }))
 		.on('error', function(err) { throw err; });
