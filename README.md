@@ -120,6 +120,8 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 ## Changelog
 
+* v0.2.3 - August 15, 2014
+	* Added fix for UMD structure.
 * v0.2.2 - August 8, 2014
 	* Added polyfills for `Functions.prototype.bind` and `element.classList`.
 * v0.2.1 - July 21, 2014
