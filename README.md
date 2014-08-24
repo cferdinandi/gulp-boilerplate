@@ -125,6 +125,8 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 Gulp Boilerplate uses [semantic versioning](http://semver.org/).
 
+* v0.5.0 - August 23, 2014
+	* Updated unit tests path.
 * v0.4.0 - August 15, 2014
 	* Added `STARTER-README.MD`.
 	* Added `index.html` template.
