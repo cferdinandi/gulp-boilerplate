@@ -16,16 +16,14 @@
 
 	var myPlugin = {}; // Object for public APIs
 	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
-	var eventListeners = []; //Listeners array
-	var settings, ELEMENTS, eventTimeout;
+	var settings, eventTimeout;
 
 	// Default settings
 	var defaults = {
 		someVar: 123,
-		callbacks: {
-			before: function () {},
-			after: function () {}
-		}
+		initClass: 'js-myplugin',
+		callbackBefore: function () {},
+		callbackAfter: function () {}
 	};
 
 
@@ -85,26 +83,35 @@
 	// @todo Do something...
 
 	/**
+	 * Handle events
+	 * @private
+	 */
+	var eventHandler = function (event) {
+		var toggle = event.target;
+		if ( toggle.hasAttribute('data-myplugin') ) {
+			// run methods
+		}
+	};
+
+	/**
 	 * Destroy the current initialization.
 	 * @public
 	 */
 	myPlugin.destroy = function () {
 
+		// If plugin isn't already initialized, stop
 		if ( !settings ) return;
 
-		// @todo Undo init functions...
+		// Remove init class for conditional CSS
+		document.documentElement.classList.remove( settings.initClass );
+
+		// @todo Undo any other init functions...
 
 		// Remove event listeners
-		if ( ELEMENTS ) {
-			forEach( ELEMENTS, function ( elem, index ) {
-				elem.removeEventListener( 'click', eventListeners[index], false );
-			});
-			eventListeners = [];
-		}
+		document.removeEventListener('click', eventHandler, false);
 
 		// Reset variables
 		settings = null;
-		ELEMENTS = null;
 		eventTimeout = null;
 
 	};
@@ -113,14 +120,13 @@
 	 * On window scroll and resize, only run events at a rate of 15fps for better performance
 	 * @private
 	 * @param  {Function} eventTimeout Timeout function
-	 * @param  {TBD} ELEMENTS Some element, nodelist, or other variable to pass in
 	 * @param  {Object} settings
 	 */
-	var eventThrottler = function ( eventTimeout, ELEMENTS, settings ) {
+	var eventThrottler = function () {
 		if ( !eventTimeout ) {
 			eventTimeout = setTimeout(function() {
 				eventTimeout = null;
-				setWrapHeight( wrap, footer, settings );
+				actualMethod( settings );
 			}, 66);
 		}
 	};
@@ -138,17 +144,16 @@
 		// Destroy any existing initializations
 		myPlugin.destroy();
 
-		// Selectors and variables
-		settings = extend( defaults, options || {} ); // Merge user options with defaults
-		ELEMENTS = document.querySelectorAll('[data-ELEM]'); // Set your variable here
+		// Merge user options with defaults
+		settings = extend( defaults, options || {} );
+
+		// Add class to HTML element to activate conditional CSS
+		document.documentElement.classList.add( settings.initClass );
 
 		// @todo Do something...
 
-		// Assigns event listeners to an array so they can be programatically destroyed
-		forEach(ELEMENTS, function (elem, index) {
-			eventListeners[index] = myPlugin.METHOD.bind( null, elem, ELEMENTSS, settings );
-			elem.addEventListener('click', eventListeners[index], false);
-		});
+		// Listen for events
+		document.addEventListener('click', eventHandler, false);
 
 	};
 
