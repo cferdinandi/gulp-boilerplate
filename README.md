@@ -55,6 +55,8 @@ gulp-boilerplate/
 |   |   |—— # static assets
 |—— src/
 |   |—— js/
+|   |   |—— bind-polyfill.js
+|   |   |—— classList.js
 |   |   |—— myplugin.js
 |   |—— sass/
 |   |   |—— myplugin.sass
@@ -69,8 +71,10 @@ gulp-boilerplate/
 |   |   |—— spec-myplugin.js
 |—— .travis.yml
 |—— gulfile.js
+|—— index.html
 |—— package.json
 |—— README.md
+|—— STARTER-README.md
 ```
 
 
@@ -89,6 +93,7 @@ Inside `gulpfile.js` you'll see a variable named `paths`. Adjust the paths to su
 ```js
 var paths = {
 	output : 'dist/',
+	temp: 'src/temp/',
 	scripts : {
 		input : [ 'src/js/*' ],
 		output : 'dist/js/'
@@ -99,7 +104,6 @@ var paths = {
 	},
 	static : 'src/static/**',
 	test : {
-		input : [ 'src/js/**/*.js' ],
 		spec : [ 'test/spec/**/*.js' ],
 		coverage: 'test/coverage/',
 		results: 'test/results/'
@@ -125,6 +129,8 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 Gulp Boilerplate uses [semantic versioning](http://semver.org/).
 
+* v0.7.0 - August 24, 2014
+	* Add new task(s) for concatenating scripts. DRYer code.
 * v0.6.0 - August 23, 2014
 	* Updated to event bubbling setup.
 * v0.5.0 - August 23, 2014
