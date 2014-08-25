@@ -1,6 +1,6 @@
 {
 	"name": "gulp-boilerplate",
-	"version": "0.6.0",
+	"version": "0.7.0",
 	"description": "My Gulp.js boilerplate for creating new web projects",
 	"author": {
 		"name": "Chris Ferdinandi",
