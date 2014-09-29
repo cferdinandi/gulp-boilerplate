@@ -7,4 +7,10 @@
  * http://gomakethings.com/mit/
  */
 
-/* Your content here... */
+{
+"version": 3,
+"mappings": "",
+"sources": [],
+"names": [],
+"file": "myplugin.css"
+}
