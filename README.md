@@ -129,6 +129,8 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 Gulp Boilerplate uses [semantic versioning](http://semver.org/).
 
+* v1.0.0 - August 31, 2014
+	* Fixed event listener filter to account for sub elements.
 * v0.7.0 - August 24, 2014
 	* Add new task(s) for concatenating scripts. DRYer code.
 * v0.6.0 - August 23, 2014

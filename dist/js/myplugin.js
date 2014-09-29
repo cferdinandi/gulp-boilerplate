@@ -1,5 +1,5 @@
 /**
- * gulp-boilerplate v0.7.0
+ * gulp-boilerplate v1.0.0
  * My Gulp.js boilerplate for creating new web projects, by Chris Ferdinandi.
  * http://github.com/cferdinandi/Plugin
  * 
@@ -89,6 +89,32 @@
 		return !options || !(typeof JSON === 'object' && typeof JSON.parse === 'function') ? {} : JSON.parse( options );
 	};
 
+	/**
+	 * Get the closest matching element up the DOM tree
+	 * @param {Element} elem Starting element
+	 * @param {String} selector Selector to match against (class, ID, or data attribute)
+	 * @return {Boolean|Element} Returns false if not match found
+	 */
+	var getClosest = function (elem, selector) {
+		var firstChar = selector.charAt(0);
+		for ( ; elem && elem !== document; elem = elem.parentNode ) {
+			if ( firstChar === '.' ) {
+				if ( elem.classList.contains( selector.substr(1) ) ) {
+					return elem;
+				}
+			} else if ( firstChar === '#' ) {
+				if ( elem.id === selector.substr(1) ) {
+					return elem;
+				}
+			} else if ( firstChar === '[' ) {
+				if ( elem.hasAttribute( selector.substr(1, selector.length - 2) ) ) {
+					return elem;
+				}
+			}
+		}
+		return false;
+	};
+
 	// @todo Do something...
 
 	/**
@@ -97,7 +123,8 @@
 	 */
 	var eventHandler = function (event) {
 		var toggle = event.target;
-		if ( toggle.hasAttribute('data-myplugin') ) {
+		var closest = getClosest(toggle, '[data-some-selector]');
+		if ( closest ) {
 			// run methods
 		}
 	};
