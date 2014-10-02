@@ -45,14 +45,17 @@ Add your files to the appropriate `src` subdirectories. Gulp will process and an
 ```
 gulp-boilerplate/
 |—— dist/
-|   |—— js/
-|   |   |—— myplugin.js
-|   |   |—— myplugin.min.js
 |   |—— css/
 |   |   |—— myplugin.css
 |   |   |—— myplugin.min.css
-|   |—— static/
-|   |   |—— # static assets
+|   |—— js/
+|   |   |—— bind-polyfill.js
+|   |   |—— bind-polyfill.min.js
+|   |   |—— classList.js
+|   |   |—— classList.min.js
+|   |   |—— myplugin.js
+|   |   |—— myplugin.min.js
+|   |—— # static assets
 |—— src/
 |   |—— js/
 |   |   |—— bind-polyfill.js
@@ -92,22 +95,21 @@ Inside `gulpfile.js` you'll see a variable named `paths`. Adjust the paths to su
 
 ```js
 var paths = {
-	output : 'dist/',
-	temp: 'src/temp/',
-	scripts : {
-		input : [ 'src/js/*' ],
-		output : 'dist/js/'
-	},
-	styles : {
-		input : 'src/sass/**/*.scss',
-		output : 'dist/css/'
-	},
-	static : 'src/static/**',
-	test : {
-		spec : [ 'test/spec/**/*.js' ],
-		coverage: 'test/coverage/',
-		results: 'test/results/'
-	}
+    output : 'dist/',
+    scripts : {
+        input : [ 'src/js/*' ],
+        output : 'dist/js/'
+    },
+    styles : {
+        input : 'src/sass/**/*.scss',
+        output : 'dist/css/'
+    },
+    static : 'src/static/**',
+    test : {
+        spec : [ 'test/spec/**/*.js' ],
+        coverage: 'test/coverage/',
+        results: 'test/results/'
+    }
 };
 ```
 
@@ -129,6 +131,9 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 Gulp Boilerplate uses [semantic versioning](http://semver.org/).
 
+* v1.0.2 - October 2, 2014
+    * Added CommonJS bug fix.
+    * Updated readme.md to reflect new file structure.
 * v1.0.1 - September 29, 2014
 	* Fixed JS concatenation bug.
 * v1.0.0 - August 31, 2014
