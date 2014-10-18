@@ -16,10 +16,15 @@ My boilerplate for creating new web projects with [Gulp.js](http://gulpjs.com/).
 **In This Documentation**
 
 1. [Getting Started](#getting-started)
-2. [Options & Settings](#options-and-settings)
-3. [Unit Testing](#unit-testing)
-3. [License](#license)
-4. [Changelog](#changelog)
+2. [File Structure](#file-structure)
+3. [Sass](#sass)
+4. [JavaScript](#javascript)
+5. [SVGs](#svgs)
+6. [Continuous Integration](#continuous-integration)
+7. [Options & Settings](#options-and-settings)
+8. [Unit Testing](#unit-testing)
+9. [License](#license)
+10. [Changelog](#changelog)
 
 ## Getting Started
 
