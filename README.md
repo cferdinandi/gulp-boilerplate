@@ -1,12 +1,13 @@
 # Gulp Boilerplate [![Build Status](https://travis-ci.org/cferdinandi/gulp-boilerplate.svg)](https://travis-ci.org/cferdinandi/gulp-boilerplate)
 
-My boilerplate for creating new web projects with [Gulp.js](http://gulpjs.com/). Forked from [Todd Motto's GulpOSS](https://github.com/toddmotto/gulp-oss) with some additions from [Mark Goodyear and Big Bite Creative](https://github.com/bigbitecreative/base).
+My boilerplate for creating new web projects with [Gulp.js](http://gulpjs.com/). Forked from [Todd Motto's GulpOSS](https://github.com/toddmotto/gulp-oss) with some additions from [Mark Goodyear and Big Bite Creative](https://github.com/bigbitecreative/base) and various tutorials around the web.
 
 * Lints and concatenates JS files.
 * Compiles Sass files and automatically [adds vendor prefixes](https://github.com/ai/autoprefixer).
-* Exports both minified and expanded JS and CSS files.
+* Exports both minified and expanded JS and CSS files with header info.
+* Generates SVG sprites.
+* Generates documentation.
 * Cleans up file directories.
-* Adds a header to the top of all JS and CSS files.
 * Runs Jasmine unit tests and generates reports.
 * Includes a `.travis.yml` file for continuous integration with [TravisCI](https://travis-ci.org).
 
@@ -28,19 +29,22 @@ Make sure these are installed first.
 * [Node.js](http://nodejs.org)
 * [Ruby Sass](http://sass-lang.com/install)
 * [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
-* [PhantomJS](http://phantomjs.org)
 
 ### Quick Start
 
 1. In bash/terminal/command line, `cd` into your project directory.
 2. Run `npm install` to install required files.
-3. When it's done installing, run `gulp` to get going.
-
-Every time you want to run your tasks, run `gulp`.
+3. When it's done installing, run one of the task runners to get going:
+	* `gulp` manually compiles files.
+	* `gulp docs` manually compiles files and generates documentation.
+	* `gulp watch` automatically compiles files when changes are made.
+	* `gulp watch:docs` automatically compiles files and geneates docs when changes are made.
+	* `gulp reload` automatically compiles files and applies changes using [LiveReload](http://livereload.com/).
+	* `gulp reload:docs` automatically compiles files, generates docs, and applies changes using [LiveReload](http://livereload.com/).
 
 ### File Structure
 
-Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into `dist`. Content in subdirectories under the `js` folder will be concatenated. (For example, files in `js/detects` will compile into `detects.js`.) Files directly under `js` will compile individually.
+Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into `dist`. Content in subdirectories under the `js` folder will be concatenated. (For example, files in `js/detects` will compile into `detects.js`.) Files directly under `js` will compile individually. SVGs in the `svg` directory will compile into `icons.svg`
 
 ```
 gulp-boilerplate/
@@ -49,20 +53,29 @@ gulp-boilerplate/
 |   |   |—— myplugin.css
 |   |   |—— myplugin.min.css
 |   |—— js/
-|   |   |—— bind-polyfill.js
-|   |   |—— bind-polyfill.min.js
 |   |   |—— classList.js
 |   |   |—— classList.min.js
 |   |   |—— myplugin.js
 |   |   |—— myplugin.min.js
+|   |—— svg/
+|   |   |—— icons.svg
 |   |—— # static assets
+|—— docs/
+|   |—— assets/
+|   |—— dist/
+|   |—— index.html
+|   |—— # other docs
 |—— src/
 |   |—— js/
-|   |   |—— bind-polyfill.js
 |   |   |—— classList.js
 |   |   |—— myplugin.js
 |   |—— sass/
-|   |   |—— myplugin.sass
+|   |   |—— _config.scss
+|   |   |—— _mixins.scss
+|   |   |—— components/
+|   |   |   |—— myplugin.scss
+|   |—— svg/
+|   |   |—— # svgs
 |   |—— static/
 |   |   |—— # static assets
 |—— test/
@@ -77,7 +90,7 @@ gulp-boilerplate/
 |—— index.html
 |—— package.json
 |—— README.md
-|—— STARTER-README.md
+|—— README-TEMPLATE.md
 ```
 
 
@@ -95,21 +108,34 @@ Inside `gulpfile.js` you'll see a variable named `paths`. Adjust the paths to su
 
 ```js
 var paths = {
-    output : 'dist/',
-    scripts : {
-        input : [ 'src/js/*' ],
-        output : 'dist/js/'
-    },
-    styles : {
-        input : 'src/sass/**/*.scss',
-        output : 'dist/css/'
-    },
-    static : 'src/static/**',
-    test : {
-        spec : [ 'test/spec/**/*.js' ],
-        coverage: 'test/coverage/',
-        results: 'test/results/'
-    }
+	input: 'src/**/*',
+	output: 'dist/',
+	scripts: {
+		input: 'src/js/*',
+		output: 'dist/js/'
+	},
+	styles: {
+		input: 'src/sass/**/*.{scss,sass}',
+		output: 'dist/css/'
+	},
+	svgs: {
+		input: 'src/svg/**/*.svg',
+		output: 'dist/svg/'
+	},
+	static: 'src/static/**',
+	test: {
+		input: 'src/js/**/*.js',
+		karma: 'test/karma.conf.js',
+		spec: 'test/spec/**/*.js',
+		coverage: 'test/coverage/',
+		results: 'test/results/'
+	},
+	docs: {
+		input: 'src/docs/*.{html,md,markdown}',
+		output: 'docs/',
+		templates: 'src/docs/_templates/',
+		assets: 'src/docs/assets/**'
+	}
 };
 ```
 
@@ -131,6 +157,12 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 Gulp Boilerplate uses [semantic versioning](http://semver.org/).
 
+* v1.1.0 - October 18, 2014
+	* Added documentation generator.
+	* Added SVG sprite generator.
+	* Added LiveReload and change watching tasks.
+	* Renamed Gulp tasks for better semantics.
+	* Updated docs.
 * v1.0.2 - October 2, 2014
     * Added CommonJS bug fix.
     * Updated readme.md to reflect new file structure.

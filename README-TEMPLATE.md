@@ -1,31 +1,31 @@
 # NAMESPACE-UP [![Build Status](https://travis-ci.org/GITHUB-USERNAME/NAMESPACE-LOW.svg)](https://travis-ci.org/GITHUB-USERNAME/NAMESPACE-LOW)
 DESCRIPTION.
 
-[Download NAMESPACE-UP](https://github.com/GITHUB-USERNAME/NAMESPACE-LOW/archive/master.zip) / [View the demo](http://GITHUB-USERNAME.github.io/NAMESPACE-LOW/).
+[Download NAMESPACE-UP](https://github.com/GITHUB-USERNAME/NAMESPACE-LOW/archive/master.zip) / [View the demo](http://GITHUB-USERNAME.github.io/NAMESPACE-LOW/)
 
 **In This Documentation**
 
 1. [Getting Started](#getting-started)
 2. [Installing with Package Managers](#installing-with-package-managers)
-3. [Options & Settings](#options-and-settings)
-4. [Browser Compatibility](#browser-compatibility)
-5. [How to Contribute](#how-to-contribute)
-6. [License](#license)
-7. [Changelog](#changelog)
-8. [Older Docs](#older-docs)
+3. [Working with the Source Files](#working-with-the-source-files)
+4. [Options & Settings](#options-and-settings)
+5. [Browser Compatibility](#browser-compatibility)
+6. [How to Contribute](#how-to-contribute)
+7. [License](#license)
+8. [Changelog](#changelog)
+9. [Older Docs](#older-docs)
 
 
 
 ## Getting Started
 
-Compiled and production-ready code can be found in the `dist` directory. The `src` directory contains development code. Unit tests are located in the `test` directory.
+Compiled and production-ready code can be found in the `dist` directory. The `src` directory contains development code. Unit tests are located in the `test` directory. It's the same build system that's used by [Kraken](http://cferdinandi.github.io/kraken/), so it includes some unnecessary tasks and Sass variables but can be dropped right in to the boilerplate without any configuration.
 
 ### 1. Include NAMESPACE-UP on your site.
 
 ```html
 <link rel="stylesheet" href="dist/css/NAMESPACE-LOW.css">
 <script src="dist/js/classList.js"></script>
-<script src="dist/js/bind-polyfill.js"></script>
 <script src="dist/js/NAMESPACE-LOW.js"></script>
 ```
 
@@ -33,7 +33,7 @@ NAMESPACE-UP is [built with Sass](http://sass-lang.com/) for easy customization.
 
 The `_config.scss` and `_mixins.scss` files are the same ones used in [Kraken](http://GITHUB-USERNAME.github.io/kraken/), so you can drop the `_NAMESPACE-LOW.css` file right into Kraken without making any updates. Or, adjust the variables to suit your own project.
 
-NAMESPACE-UP also requires [classList.js](https://github.com/eligrey/classList.js) and `bind-polyfill.js`, polyfills that extend ECMAScript 5 API support to more browsers.
+NAMESPACE-UP also requires [classList.js](https://github.com/eligrey/classList.js), a polyfill that extends ECMAScript 5 API support to more browsers.
 
 ### 2. Add the markup to your HTML.
 
@@ -62,6 +62,28 @@ You can install NAMEPSACE-UP with your favorite package manager.
 * **NPM:** `npm install GITHUB-USERNAME/NAMESPACE-LOW`
 * **Bower:** `bower install https://github.com/GITHUB-USERNAME/NAMESPACE-LOW.git`
 * **Component:** `component install GITHUB-USERNAME/NAMESPACE-LOW`
+
+
+
+## Working with the Source Files
+
+If you would prefer, you can work with the development code in the `src` directory using the included [Gulp build system](http://gulpjs.com/). This compiles, lints, and minifies code, and runs unit tests. It's the same build system that's used by [Kraken](http://cferdinandi.github.io/kraken/), so it includes some unnecessary tasks and Sass variables but can be dropped right in to the boilerplate without any configuration.
+
+### Dependencies
+Make sure these are installed first.
+
+* [Node.js](http://nodejs.org)
+* [Ruby Sass](http://sass-lang.com/install)
+* [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
+
+### Quick Start
+
+1. In bash/terminal/command line, `cd` into your project directory.
+2. Run `npm install` to install required files.
+3. When it's done installing, run one of the task runners to get going:
+	* `gulp` manually compiles files.
+	* `gulp watch` automatically compiles files when changes are made.
+	* `gulp reload` automatically compiles files and applies changes using [LiveReload](http://livereload.com/).
 
 
 
@@ -103,7 +125,7 @@ Description
 ```
 
 #### destroy()
-Destroy the current `NAMESPACE-LOW.init()`.
+Destroy the current `NAMESPACE-LOW.init()`. This is called automatically during the init function to remove any existing initializations.
 
 ```javascript
 NAMESPACE-LOW.destroy();
