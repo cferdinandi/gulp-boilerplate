@@ -42,9 +42,15 @@ Make sure these are installed first.
 	* `gulp reload` automatically compiles files and applies changes using [LiveReload](http://livereload.com/).
 	* `gulp reload:docs` automatically compiles files, generates docs, and applies changes using [LiveReload](http://livereload.com/).
 
-### File Structure
 
-Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into `dist`. Content in subdirectories under the `js` folder will be concatenated. (For example, files in `js/detects` will compile into `detects.js`.) Files directly under `js` will compile individually. SVGs in the `svg` directory will compile into `icons.svg`
+
+## File Structure
+
+Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into `dist`.
+
+* Content in subdirectories under the `js` folder will be concatenated. For example, files in `js/detects` will compile into `detects.js`. Files directly under `js` will compile individually.
+* SVGs in the `svg` directory will compile into `icons.svg`.
+* Assets in the `assets` directory will be copied as-is into the `dist` directory.
 
 ```
 gulp-boilerplate/
@@ -95,6 +101,42 @@ gulp-boilerplate/
 
 
 
+## Sass
+
+Sass files are located in `src` > `sass`. Gulp generates minified and unminified CSS files. It also includes [autoprefixer](https://github.com/postcss/autoprefixer), which adds vendor prefixes for you if required by the last two versions of a browser.
+
+
+
+## JavaScript
+
+JavaScript files are located in the `src` > `js` directory.
+
+Files placed directly in the js folder will compile directly to `dist` > `js` as both minified and unminified files. Files placed in subdirectories will also be concatenated into a single file. For example, files in `js/detects` will compile into `detects.js`. Files directly under `js` will compile individually.
+
+### Unit Testing
+
+Gulp Boilerplate is set up for unit testing with [Jasmine](http://jasmine.github.io/2.0/introduction.html). Add your tests to `test/spec/spec-myplugin.js`. Adjust filenames and references as needed.
+
+Unit test results are printed in terminal, but you can also view them in a browser under `test/results/unit-tests.html`. Get a report of how much of your scripts is covered by testing under `test/coverage`.
+
+
+
+## SVGs
+
+SVG files placed in the `src` > `svg` directory will be compiled into a single SVG sprite called `icons.svg` in the `dist` > `svg` directory.
+
+
+
+## Continuous Integration
+
+This boilerplate includes a configuration file for [Travis CI](http://docs.travis-ci.com/user/getting-started/), a continuous integration service for GitHub.
+
+If you sign-up and activate it for your repository, Travis CI will run your build and execute any processes to make sure everything is working as expected. This is particularly useful when working with a team or managing open source projects with multiple contributors.
+
+The `.travis.yml` file is pre-configured for the boilerplate's build system. Even if you add files or update the Gulp tasks, you shouldn't need to change anything for it to work.
+
+
+
 ## Options and Settings
 
 ### Updating Project Details
@@ -138,13 +180,6 @@ var paths = {
 	}
 };
 ```
-
-
-## Unit Testing
-
-Gulp Boilerplate is set up for unit testing with [Jasmine](http://jasmine.github.io/2.0/introduction.html). Add your tests to `test/spec/spec-myplugin.js`. Adjust filenames and references as needed.
-
-Unit test results are printed in terminal, but you can also view them in a browser under `test/results/unit-tests.html`. Get a report of how much of your scripts is covered by testing under `test/coverage`.
 
 
 ## License
