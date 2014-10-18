@@ -1,0 +1,36 @@
+//
+//	MIXINS & FUNCTIONS
+//	A few simple Sass helpers.
+//
+
+// @font-face mixin
+// Order of the includes matters, and it is: normal, bold, italic, bold+italic.
+// Forked from Bourbon. https://github.com/thoughtbot/bourbon/
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal) {
+	@font-face {
+		font-family: $font-family;
+		font-weight: $weight;
+		font-style: $style;
+
+		src: url('#{$file-path}.eot');
+		src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+		     url('#{$file-path}.woff') format('woff'),
+		     url('#{$file-path}.ttf') format('truetype'),
+		     url('#{$file-path}.svg##{$font-family}') format('svg');
+	}
+}
+
+// Strip units from values
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// Calculate ems from pixels
+@function calc-em($px, $base: 16) {
+	$px: strip-unit($px);
+	$base: strip-unit($base);
+	@if $px == 1 {
+		@return 0.0725em;
+	}
+	@return ($px / $base) * 1em;
+}
