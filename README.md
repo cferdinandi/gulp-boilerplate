@@ -74,6 +74,14 @@ gulp-boilerplate/
 |   |—— index.html
 |   |—— # other docs
 |—— src/
+|   |—— docs/
+|   |   |—— _templates/
+|   |   |   |—— _header.html
+|   |   |   |—— _footer.html
+|   |   |—— assets/
+|   |   |   |—— # doc-specific assets
+|   |   |—— index.html
+|   |   |—— # other docs
 |   |—— js/
 |   |   |—— classList.js
 |   |   |—— myplugin.js
@@ -124,6 +132,14 @@ Unit test results are printed in terminal, but you can also view them in a brows
 ### SVGs
 
 SVG files placed in the `src` > `svg` directory will be compiled into a single SVG sprite called `icons.svg` in the `dist` > `svg` directory.
+
+### Documentation
+
+Add HTML or markdown (`.md` or `.markdown`) files to your `docs` folder in `src`.
+
+The `_templates` directory in `src` contains the `_header.html` and `_footer.html` templates. These are automatically added to the beginning and end of each documentation page. You can also add your own templates to the `_templates` directory. Include template files in your docs by writing `@@include('path-to-file')` on its own line in your markup (or markdown).
+
+Files placed in the `assets` directory will be moved over as-is to the `docs` directory. Keel will also add a copy of your `dist` files so you can use them in your documentation.
 
 
 
@@ -193,6 +209,8 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 Gulp Boilerplate uses [semantic versioning](http://semver.org/).
 
+* v1.1.1 - October 20, 2014
+	* Added documentation on generating docs.
 * v1.1.0 - October 18, 2014
 	* Added documentation generator.
 	* Added SVG sprite generator.
