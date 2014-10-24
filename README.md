@@ -139,7 +139,7 @@ Add HTML or markdown (`.md` or `.markdown`) files to your `docs` folder in `src`
 
 The `_templates` directory in `src` contains the `_header.html` and `_footer.html` templates. These are automatically added to the beginning and end of each documentation page. You can also add your own templates to the `_templates` directory. Include template files in your docs by writing `@@include('path-to-file')` on its own line in your markup (or markdown).
 
-Files placed in the `assets` directory will be moved over as-is to the `docs` directory. Keel will also add a copy of your `dist` files so you can use them in your documentation.
+Files placed in the `assets` directory will be moved over as-is to the `docs` directory. The boilerplate will also add a copy of your `dist` files so you can use them in your documentation.
 
 
 
