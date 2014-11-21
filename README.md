@@ -37,12 +37,8 @@ Make sure these are installed first.
 1. In bash/terminal/command line, `cd` into your project directory.
 2. Run `npm install` to install required files.
 3. When it's done installing, run one of the task runners to get going:
-	* `gulp` manually compiles files.
-	* `gulp docs` manually compiles files and generates documentation.
-	* `gulp watch` automatically compiles files when changes are made.
-	* `gulp watch:docs` automatically compiles files and geneates docs when changes are made.
-	* `gulp reload` automatically compiles files and applies changes using [LiveReload](http://livereload.com/).
-	* `gulp reload:docs` automatically compiles files, generates docs, and applies changes using [LiveReload](http://livereload.com/).
+	* `gulp` manually compiles files and runs unit tests.
+	* `gulp watch` automatically compiles files, runs unit tests, and applies changes using [LiveReload](http://livereload.com/).
 
 
 
@@ -209,6 +205,8 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 Gulp Boilerplate uses [semantic versioning](http://semver.org/).
 
+* v1.1.2 - November 20, 2014
+	* Fixed live reload bug.
 * v1.1.1 - October 20, 2014
 	* Added documentation on generating docs.
 * v1.1.0 - October 18, 2014
