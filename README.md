@@ -205,6 +205,8 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 Gulp Boilerplate uses [semantic versioning](http://semver.org/).
 
+* v1.2.0 - January 7, 2014
+	* Updated Sass build with line numbers.
 * v1.1.2 - November 20, 2014
 	* Fixed live reload bug.
 * v1.1.1 - October 20, 2014
