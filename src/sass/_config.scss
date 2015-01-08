@@ -5,13 +5,14 @@
 // (For math purposes. Actual font sizes in ems.)
 // 1px, 4px, 5px, 8px, 9px, 11px, 12px, 13px, 15px, 16px, 19px, 21px, 24px, 28px, 32px, 48px, 64px, 80px, 96px
 // line height: 1.5em on small screens, 1.5625em on big screens
-//
+
 
 // Colors
 $color-primary: #0088cc;
 $color-black: #272727;
 $color-white: #ffffff;
 
+$color-info: #0088cc; // Blue
 $color-success: #377f31; // Green
 $color-danger: #880e14; // Red
 $color-warning: #dba909; // Yellow
@@ -36,16 +37,21 @@ $bp-xlarge: 80em;
 
 
 // Sizing
-$font-base: 100%;
-$font-xlarge-screens: 125%;
+$font-size-base: 100%;
+$font-size-xlarge-screens: 125%;
 $spacing: 1.5625em;
-$container-max: 80em;
 $container-width: 88%;
+$container-max-width: 80em;
 
 
 // Grid
 $grid-margins: 1.4%;
-$grid-sizes: ( // name: width
+$grid-sizes: (
+	// Grid width options
+	// Add/remove grid's as needed
+	// $name: $width
+	// $name - {string} class suffix
+	// $width - {string} width of the grid
 	fourth: 25%,
 	third: 33.33333333333%,
 	half: 50%,
@@ -53,14 +59,37 @@ $grid-sizes: ( // name: width
 	three-fourths: 75%,
 	full: 100%
 );
-$grid-breakpoints: ( // breakpoint, prefix, include offsets (boolean)
+$grid-breakpoints: (
+	// Breakpoints at which to activate grid
+	// Add/remove breakpoints as needed
+	// ($breakpoint, $prefix-class, $include-offsets)
+	// $breakpoint - {string|variable} the breakpoint
+	// $prefix-class - {string|optional} class to be used with `.row` to activate grid
+	// $include-offsets - {boolean} if true, include offset classes at this breakpoint
 	($bp-xsmall, ".row-start-xsmall", false),
 	($bp-small, ".row-start-small", false),
-	($bp-medium, null, true)
+	($bp-medium, null, true),
+);
+$grid-dynamic: (
+	// Create grid classes that vary in size at different breakpoints
+	// Add/remove classes, breakpoints, and sizes as needed
+	// ($class, $breakpoint, $width)
+	// $class - {string} the grid class
+	// $breakpoint - {string|variable} the breakpoint
+	// $width - {string|variable} width of the grid at the breakpoint
+	(".grid-dynamic", $bp-xsmall, map-get($grid-sizes, half))
+	(".grid-dynamic", $bp-small, map-get($grid-sizes, third))
+	(".grid-dynamic", $bp-medium, map-get($grid-sizes, fourth))
 );
 
 
 // Icons
-$icons: ( // name, character, color
+$icons: (
+	// Generate icon font classes
+	// Add/remove icons as needed
+	// $name, $character, $color
+	// $name - {string} the name of the icon (will be prefixed by `.icon-`)
+	// $character - {string} the unicode character for the icon
+	// $color - {string|variable|optional} the hex or named color of the icon
 	("logo", "\e600", null),
 );
