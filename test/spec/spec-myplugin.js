@@ -72,11 +72,11 @@ describe('My module', function () {
 	describe('Should initialize plugin', function () {
 
 		beforeEach(function () {
-			MyPlugin.init();
+			myPlugin.init();
 		});
 
 		it('Document should include the myPlugin module', function () {
-			expect(!!MyPlugin).toBe(true);
+			expect(!!myPlugin).toBe(true);
 		});
 
 	});

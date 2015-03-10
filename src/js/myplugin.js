@@ -1,12 +1,12 @@
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
-		define('MyPlugin', factory(root));
+		define('myPlugin', factory(root));
 	} else if ( typeof exports === 'object' ) {
 		module.exports = factory(root);
 	} else {
-		root.MyPlugin = factory(root);
+		root.myPlugin = factory(root);
 	}
-})(window || this, function (root) {
+})(this, function (root) {
 
 	'use strict';
 
