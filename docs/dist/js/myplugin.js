@@ -1,5 +1,5 @@
 /**
- * gulp-boilerplate v1.3.1
+ * gulp-boilerplate v1.3.2
  * My Gulp.js boilerplate for creating new web projects, by Chris Ferdinandi.
  * http://github.com/cferdinandi/Plugin
  * 
@@ -15,7 +15,7 @@
 	} else {
 		root.myPlugin = factory(root);
 	}
-})(this, function (root) {
+})(typeof global !== "undefined" ? global : this.window || this.global, function (root) {
 
 	'use strict';
 

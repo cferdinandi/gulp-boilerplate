@@ -6,7 +6,7 @@
 	} else {
 		root.myPlugin = factory(root);
 	}
-})(this, function (root) {
+})(typeof global !== "undefined" ? global : this.window || this.global, function (root) {
 
 	'use strict';
 

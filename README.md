@@ -205,6 +205,8 @@ Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit
 
 Gulp Boilerplate uses [semantic versioning](http://semver.org/).
 
+* v1.3.2 - May 13, 2015
+	* Fixed Browserify `window` bug.
 * v1.3.1 - March 9, 2015
 	* Fixed UMD wrapper.
 * v1.3.0 - January 7, 2014
