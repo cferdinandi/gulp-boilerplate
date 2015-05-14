@@ -47,7 +47,7 @@ Make sure these are installed first.
 Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into `dist`.
 
 * Content in subdirectories under the `js` folder will be concatenated. For example, files in `js/detects` will compile into `detects.js`. Files directly under `js` will compile individually.
-* SVGs in the `svg` directory will compile into `icons.svg`.
+* SVGs in the `svg` subdirectories of the `svg` directory will compile into `icons.svg`.
 * Assets in the `assets` directory will be copied as-is into the `dist` directory.
 
 ```
@@ -127,7 +127,9 @@ Unit test results are printed in terminal, but you can also view them in a brows
 
 ### SVGs
 
-SVG files placed in the `src` > `svg` directory will be compiled into a single SVG sprite called `icons.svg` in the `dist` > `svg` directory.
+SVG files placed in the `src` > `svg` directory will be optimized with SVGO and compiled into `dist` > `svg` as-is.
+
+SVG files placed in subdirectories of `src` > `svg` will be ocmpiled into a single SVG sprite named after the parent directory. For example, files in `src` > `svg` > `icons` would compile into a single `icons.svg` file.
 
 ### Documentation
 
