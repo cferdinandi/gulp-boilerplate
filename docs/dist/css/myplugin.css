@@ -1,5 +1,5 @@
 /**
- * gulp-boilerplate v1.3.2
+ * gulp-boilerplate v2.0.0
  * My Gulp.js boilerplate for creating new web projects, by Chris Ferdinandi.
  * http://github.com/cferdinandi/Plugin
  * 
