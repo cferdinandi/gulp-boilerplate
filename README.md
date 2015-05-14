@@ -21,7 +21,6 @@ My boilerplate for creating new web projects with [Gulp.js](http://gulpjs.com/).
 4. [Options & Settings](#options-and-settings)
 5. [Continuous Integration](#continuous-integration)
 6. [License](#license)
-7. [Changelog](#changelog)
 
 ## Getting Started
 
