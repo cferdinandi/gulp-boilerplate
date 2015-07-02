@@ -145,4 +145,4 @@ In lieu of a formal style guide, take care to maintain the existing coding style
 
 ## License
 
-NAMESPACE-UP is licensed under the [MIT License](http://gomakethings.com/mit/).
+The code is available under the [MIT License](LICENSE.md).

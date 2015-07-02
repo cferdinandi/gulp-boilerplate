@@ -195,6 +195,12 @@ The `.travis.yml` file is pre-configured for the boilerplate's build system. Eve
 
 
 
+## How to Contribute
+
+In lieu of a formal style guide, take care to maintain the existing coding style. Please apply fixes to both the development and production code. Don't forget to update the version number, and when applicable, the documentation.
+
+
+
 ## License
 
-Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit/).
+The code is available under the [MIT License](LICENSE.md).
