@@ -28,7 +28,6 @@ My boilerplate for creating new web projects with [Gulp.js](http://gulpjs.com/).
 Make sure these are installed first.
 
 * [Node.js](http://nodejs.org)
-* [Ruby Sass](http://sass-lang.com/install)
 * [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
 
 ### Quick Start
@@ -196,6 +195,12 @@ The `.travis.yml` file is pre-configured for the boilerplate's build system. Eve
 
 
 
+## How to Contribute
+
+In lieu of a formal style guide, take care to maintain the existing coding style. Please apply fixes to both the development and production code. Don't forget to update the version number, and when applicable, the documentation.
+
+
+
 ## License
 
-Gulp Boilerplate is licensed under the [MIT License](http://gomakethings.com/mit/).
+The code is available under the [MIT License](LICENSE.md).
