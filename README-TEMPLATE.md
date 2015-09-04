@@ -3,16 +3,6 @@ DESCRIPTION.
 
 [Download NAMESPACE-UP](https://github.com/GITHUB-USERNAME/NAMESPACE-LOW/archive/master.zip) / [View the demo](http://GITHUB-USERNAME.github.io/NAMESPACE-LOW/)
 
-**In This Documentation**
-
-1. [Getting Started](#getting-started)
-2. [Installing with Package Managers](#installing-with-package-managers)
-3. [Working with the Source Files](#working-with-the-source-files)
-4. [Options & Settings](#options-and-settings)
-5. [Browser Compatibility](#browser-compatibility)
-6. [How to Contribute](#how-to-contribute)
-7. [License](#license)
-
 
 
 ## Getting Started
@@ -80,6 +70,7 @@ Make sure these are installed first.
 3. When it's done installing, run one of the task runners to get going:
 	* `gulp` manually compiles files.
 	* `gulp watch` automatically compiles files when changes are made and applies changes using [LiveReload](http://livereload.com/).
+	* `gulp test` compiles files and runs unit tests.
 
 
 

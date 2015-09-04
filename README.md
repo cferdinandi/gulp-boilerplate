@@ -37,6 +37,7 @@ Make sure these are installed first.
 3. When it's done installing, run one of the task runners to get going:
 	* `gulp` manually compiles files and runs unit tests.
 	* `gulp watch` automatically compiles files, runs unit tests, and applies changes using [LiveReload](http://livereload.com/).
+	* `gulp test` compiles files and runs unit tests.
 
 
 
@@ -45,8 +46,8 @@ Make sure these are installed first.
 Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into `dist`.
 
 * Content in subdirectories under the `js` folder will be concatenated. For example, files in `js/detects` will compile into `detects.js`. Files directly under `js` will compile individually.
-* SVGs in the `svg` subdirectories of the `svg` directory will compile into `icons.svg`.
-* Assets in the `assets` directory will be copied as-is into the `dist` directory.
+* Files in the `img` directory will be copied as-is into the `dist/img` directory.
+* SVG files placed in the `src/svg` directory will be optimized and compiled into the `dist/svg` directory. SVG files placed in a subdirectory of `src/svg` will be compiled into a single SVG sprite named after the subdirectory.
 
 ```
 gulp-boilerplate/
@@ -54,6 +55,8 @@ gulp-boilerplate/
 |   |—— css/
 |   |   |—— myplugin.css
 |   |   |—— myplugin.min.css
+|   |—— img/
+|   |   |—— # image files
 |   |—— js/
 |   |   |—— classList.js
 |   |   |—— classList.min.js
@@ -76,6 +79,8 @@ gulp-boilerplate/
 |   |   |   |—— # doc-specific assets
 |   |   |—— index.html
 |   |   |—— # other docs
+|   |—— img/
+|   |   |—— # image files
 |   |—— js/
 |   |   |—— classList.js
 |   |   |—— myplugin.js
@@ -86,8 +91,6 @@ gulp-boilerplate/
 |   |   |   |—— myplugin.scss
 |   |—— svg/
 |   |   |—— # svgs
-|   |—— static/
-|   |   |—— # static assets
 |—— test/
 |   |—— coverage/
 |   |   |—— various files
@@ -125,9 +128,9 @@ Unit test results are printed in terminal, but you can also view them in a brows
 
 ### SVGs
 
-SVG files placed in the `src` > `svg` directory will be optimized with SVGO and compiled into `dist` > `svg` as-is.
+SVG files placed in the `src/svg` directory will be optimized with SVGO and compiled into `dist/svg` as-is.
 
-SVG files placed in subdirectories of `src` > `svg` will be ocmpiled into a single SVG sprite named after the parent directory. For example, files in `src` > `svg` > `icons` would compile into a single `icons.svg` file.
+SVG files placed in subdirectories of `src/svg` will be ocmpiled into a single SVG sprite named after the parent directory. For example, files in `src/svg/icons` would compile into a single `icons.svg` file.
 
 ### Documentation
 
