@@ -1,10 +1,8 @@
-/**
- * gulp-boilerplate v2.0.0
- * My Gulp.js boilerplate for creating new web projects, by Chris Ferdinandi.
+/*!
+ * gulp-boilerplate v3.0.0: My Gulp.js boilerplate for creating new web projects
+ * (c) 2015 Chris Ferdinandi
+ * MIT License
  * http://github.com/cferdinandi/Plugin
- * 
- * Free to use under the MIT License.
- * http://gomakethings.com/mit/
  */
 
 /*
