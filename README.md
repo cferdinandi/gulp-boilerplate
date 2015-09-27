@@ -190,13 +190,22 @@ var paths = {
 
 ## Continuous Integration
 
+### Travis CI
+
 This boilerplate includes a configuration file for [Travis CI](http://docs.travis-ci.com/user/getting-started/), a continuous integration service for GitHub.
 
 If you sign-up and activate it for your repository, Travis CI will run your build and execute any processes to make sure everything is working as expected. This is particularly useful when working with a team or managing open source projects with multiple contributors.
 
 The `.travis.yml` file is pre-configured for the boilerplate's build system. Even if you add files or update the Gulp tasks, you shouldn't need to change anything for it to work.
 
+### Codeship
 
+This boilerplate also works with [Codeship.io](https://codeship.com/).
+
+After you have signed up and connected your repository you will be given options for configuring your tests. In the dropdown labeled `Select your technology to prepopulate basic commands` choose `node.js.` This will cause codeship to run npm install prior to running your tests. 
+
+Then in the `Configure Test Pipelines` box replace `grunt test` with `gulp test.` Save your settings and make
+a commit to your repository. Codeship should then build and test your repository successfully.
 
 ## How to Contribute
 
