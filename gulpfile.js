@@ -27,7 +27,7 @@ var karma = require('gulp-karma');
 // Styles
 var sass = require('gulp-sass');
 var prefix = require('gulp-autoprefixer');
-var minify = require('gulp-minify-css');
+var minify = require('gulp-cssnano');
 
 // SVGs
 var svgmin = require('gulp-svgmin');
@@ -143,7 +143,11 @@ gulp.task('build:styles', ['clean:dist'], function() {
         .pipe(header(banner.full, { package : package }))
         .pipe(gulp.dest(paths.styles.output))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(minify())
+        .pipe(minify({
+            discardComments: {
+                removeAll: true
+            }
+        }))
         .pipe(header(banner.min, { package : package }))
         .pipe(gulp.dest(paths.styles.output));
 });
