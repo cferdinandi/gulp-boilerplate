@@ -1,5 +1,5 @@
 /*!
- * gulp-boilerplate v4.0.0: My Gulp.js boilerplate for creating new web projects
+ * gulp-boilerplate v4.1.0: My Gulp.js boilerplate for creating new web projects
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/Plugin

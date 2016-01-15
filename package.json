@@ -1,8 +1,8 @@
 {
 	"name": "gulp-boilerplate",
-	"version": "4.0.0",
+	"version": "4.1.0",
 	"description": "My Gulp.js boilerplate for creating new web projects",
-	"main": "./dist",
+	"main": "./dist/js/myplugin.min.js",
 	"author": {
 		"name": "Chris Ferdinandi",
 		"url": "http://gomakethings.com"
