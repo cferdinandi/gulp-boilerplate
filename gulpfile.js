@@ -61,6 +61,10 @@ var paths = {
         input: 'src/img/*',
         output: 'dist/img/'
     },
+    static: {
+        input: 'src/static/*',
+        output: 'dist/'
+    },
     test: {
         input: 'src/js/**/*.js',
         karma: 'test/karma.conf.js',
@@ -180,6 +184,13 @@ gulp.task('build:images', ['clean:dist'], function() {
         .pipe(gulp.dest(paths.images.output));
 });
 
+// Copy static files into output folder
+gulp.task('build:static', ['clean:dist'], function() {
+    return gulp.src(paths.static.input)
+        .pipe(plumber())
+        .pipe(gulp.dest(paths.static.output));
+});
+
 // Lint scripts
 gulp.task('lint:scripts', function () {
     return gulp.src(paths.scripts.input)
@@ -274,6 +285,7 @@ gulp.task('compile', [
     'build:scripts',
     'build:styles',
     'build:images',
+    'build:static',
     'build:svgs'
 ]);
 

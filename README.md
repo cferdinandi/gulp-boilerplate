@@ -89,6 +89,8 @@ gulp-boilerplate/
 |   |   |—— _mixins.scss
 |   |   |—— components/
 |   |   |   |—— myplugin.scss
+|   |—— img/
+|   |   |—— # static files and folders
 |   |—— svg/
 |   |   |—— # svgs
 |—— test/
@@ -126,6 +128,14 @@ Gulp Boilerplate is set up for unit testing with [Jasmine](http://jasmine.github
 
 Unit test results are printed in terminal, but you can also view them in a browser under `test/results/unit-tests.html`. Get a report of how much of your scripts is covered by testing under `test/coverage`.
 
+### Images
+
+Image files placed in the `src` > `img` directory will be copied as-is into the `dist` > `img` directory. While you can add image optimization processes to Gulp, I find that tools like [ImageOptim](https://imageoptim.com/) and [b64.io](http://b64.io/) do a better job.
+
+### Static Files
+
+Files and folders placed in the `src` > `static` directory will be copied as-is into the `dist` directory.
+
 ### SVGs
 
 SVG files placed in the `src/svg` directory will be optimized with SVGO and compiled into `dist/svg` as-is.
@@ -155,34 +165,41 @@ Inside `gulpfile.js` you'll see a variable named `paths`. Adjust the paths to su
 
 ```js
 var paths = {
-	input: 'src/**/*',
-	output: 'dist/',
-	scripts: {
-		input: 'src/js/*',
-		output: 'dist/js/'
-	},
-	styles: {
-		input: 'src/sass/**/*.{scss,sass}',
-		output: 'dist/css/'
-	},
-	svgs: {
-		input: 'src/svg/**/*.svg',
-		output: 'dist/svg/'
-	},
-	static: 'src/static/**',
-	test: {
-		input: 'src/js/**/*.js',
-		karma: 'test/karma.conf.js',
-		spec: 'test/spec/**/*.js',
-		coverage: 'test/coverage/',
-		results: 'test/results/'
-	},
-	docs: {
-		input: 'src/docs/*.{html,md,markdown}',
-		output: 'docs/',
-		templates: 'src/docs/_templates/',
-		assets: 'src/docs/assets/**'
-	}
+    input: 'src/**/*',
+    output: 'dist/',
+    scripts: {
+        input: 'src/js/*',
+        output: 'dist/js/'
+    },
+    styles: {
+        input: 'src/sass/**/*.{scss,sass}',
+        output: 'dist/css/'
+    },
+    svgs: {
+        input: 'src/svg/*',
+        output: 'dist/svg/'
+    },
+    images: {
+        input: 'src/img/*',
+        output: 'dist/img/'
+    },
+    static: {
+        input: 'src/static/*',
+        output: 'dist/'
+    },
+    test: {
+        input: 'src/js/**/*.js',
+        karma: 'test/karma.conf.js',
+        spec: 'test/spec/**/*.js',
+        coverage: 'test/coverage/',
+        results: 'test/results/'
+    },
+    docs: {
+        input: 'src/docs/*.{html,md,markdown}',
+        output: 'docs/',
+        templates: 'src/docs/_templates/',
+        assets: 'src/docs/assets/**'
+    }
 };
 ```
 
@@ -202,7 +219,7 @@ The `.travis.yml` file is pre-configured for the boilerplate's build system. Eve
 
 This boilerplate also works with [Codeship.io](https://codeship.com/).
 
-After you have signed up and connected your repository you will be given options for configuring your tests. In the dropdown labeled `Select your technology to prepopulate basic commands` choose `node.js.` This will cause codeship to run npm install prior to running your tests. 
+After you have signed up and connected your repository you will be given options for configuring your tests. In the dropdown labeled `Select your technology to prepopulate basic commands` choose `node.js.` This will cause codeship to run npm install prior to running your tests.
 
 Then in the `Configure Test Pipelines` box replace `grunt test` with `gulp test.` Save your settings and make
 a commit to your repository. Codeship should then build and test your repository successfully.
