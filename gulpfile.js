@@ -14,7 +14,8 @@ var rename = require('gulp-rename');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
 var watch = require('gulp-watch');
-var livereload = require('gulp-livereload');
+var browserSync = require('browser-sync');
+var reload  = browserSync.reload;
 var package = require('./package.json');
 
 // Scripts and tests
@@ -153,7 +154,8 @@ gulp.task('build:styles', ['clean:dist'], function() {
             }
         }))
         .pipe(header(banner.min, { package : package }))
-        .pipe(gulp.dest(paths.styles.output));
+        .pipe(gulp.dest(paths.styles.output))
+        .pipe(reload({ stream: true }));
 });
 
 // Generate SVG sprites
@@ -259,20 +261,22 @@ gulp.task('clean:docs', function () {
     return del.sync(paths.docs.output);
 });
 
-// Spin up livereload server and listen for file changes
-gulp.task('listen', function () {
-    livereload.listen();
-    gulp.watch(paths.input).on('change', function(file) {
-        gulp.start('default');
-        gulp.start('refresh');
+// Browser-sync task, only cares about compiled CSS
+gulp.task('browser-sync', function() {
+    browserSync({
+        files: [paths.styles.input, paths.scripts.input],
+        server: {
+            baseDir: "./docs/",
+        },
+    xip: true,
+    online: true
     });
 });
 
-// Run livereload after file change
-gulp.task('refresh', ['compile', 'docs'], function () {
-    livereload.changed();
+// Reload Browsersync
+gulp.task('reload', ['build:styles'], function() {
+  reload({ stream: false });
 });
-
 
 /**
  * Task Runners
@@ -304,10 +308,11 @@ gulp.task('default', [
 ]);
 
 // Compile files and generate docs when something changes
-gulp.task('watch', [
-    'listen',
-    'default'
-]);
+gulp.task('watch', [ 'default', 'browser-sync' ], function() {
+    gulp.watch(paths.input).on('change', function (file) {
+        gulp.start('default')
+    });
+});
 
 // Run unit tests
 gulp.task('test', [

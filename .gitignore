@@ -3,8 +3,11 @@ node_modules
 test/results
 test/coverage
 
-## OS X
+# OS X
 .DS_Store
 ._*
 .Spotlight-V100
 .Trashes
+
+# Webstorm
+.idea

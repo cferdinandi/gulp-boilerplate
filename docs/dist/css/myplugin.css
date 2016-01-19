@@ -5,3 +5,7 @@
  * http://github.com/cferdinandi/Plugin
  */
 
+/* line 2, /private/var/application/my_projects/boilerplates/gulp-boilerplate/src/sass/components/_myplugin.scss */
+body {
+  background-color: green;
+}
