@@ -1,6 +1,6 @@
 {
 	"name": "gulp-boilerplate",
-	"version": "4.2.1",
+	"version": "4.2.2",
 	"description": "My Gulp.js boilerplate for creating new web projects",
 	"main": "./dist/js/myplugin.min.js",
 	"author": {

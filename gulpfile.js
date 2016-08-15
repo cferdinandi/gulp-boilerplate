@@ -115,7 +115,8 @@ gulp.task('build:scripts', ['clean:dist'], function() {
         .pipe(rename, { suffix: '.min' })
         .pipe(uglify)
         .pipe(header, banner.min, { package : package })
-        .pipe(gulp.dest, paths.scripts.output);
+        .pipe(gulp.dest, paths.scripts.output)
+        .pipe(livereload);
 
     return gulp.src(paths.scripts.input)
         .pipe(plumber())
@@ -153,7 +154,8 @@ gulp.task('build:styles', ['clean:dist'], function() {
             }
         }))
         .pipe(header(banner.min, { package : package }))
-        .pipe(gulp.dest(paths.styles.output));
+        .pipe(gulp.dest(paths.styles.output))
+        .pipe(livereload());
 });
 
 // Generate SVG sprites
@@ -237,7 +239,8 @@ gulp.task('build:docs', ['compile', 'clean:docs'], function() {
         }))
         .pipe(header(fs.readFileSync(paths.docs.templates + '/_header.html', 'utf8')))
         .pipe(footer(fs.readFileSync(paths.docs.templates + '/_footer.html', 'utf8')))
-        .pipe(gulp.dest(paths.docs.output));
+        .pipe(gulp.dest(paths.docs.output))
+        .pipe(livereload());
 });
 
 // Copy distribution files to docs
@@ -262,15 +265,7 @@ gulp.task('clean:docs', function () {
 // Spin up livereload server and listen for file changes
 gulp.task('listen', function () {
     livereload.listen();
-    gulp.watch(paths.input).on('change', function(file) {
-        gulp.start('default');
-        gulp.start('refresh');
-    });
-});
-
-// Run livereload after file change
-gulp.task('refresh', ['compile', 'docs'], function () {
-    livereload.changed();
+    gulp.watch(paths.input, ['default']);
 });
 
 
