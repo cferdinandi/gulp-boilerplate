@@ -102,7 +102,6 @@ gulp-boilerplate/
 |   |   |—— spec-myplugin.js
 |—— .travis.yml
 |—— gulfile.js
-|—— index.html
 |—— package.json
 |—— README.md
 |—— README-TEMPLATE.md
