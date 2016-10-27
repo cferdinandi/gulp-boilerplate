@@ -47,6 +47,7 @@ var paths = {
     output: 'dist/',
     scripts: {
         input: 'src/js/*',
+        lint: 'src/js/**',
         output: 'dist/js/'
     },
     styles: {
@@ -195,7 +196,7 @@ gulp.task('build:static', ['clean:dist'], function() {
 
 // Lint scripts
 gulp.task('lint:scripts', function () {
-    return gulp.src(paths.scripts.input)
+    return gulp.src(paths.scripts.lint)
         .pipe(plumber())
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
