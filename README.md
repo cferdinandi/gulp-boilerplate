@@ -2,42 +2,33 @@
 
 My boilerplate for creating new web projects with [Gulp.js](http://gulpjs.com/). Forked from [Todd Motto's GulpOSS](https://github.com/toddmotto/gulp-oss) with some additions from [Mark Goodyear and Big Bite Creative](https://github.com/bigbitecreative/base) and various tutorials around the web.
 
-* Lints and concatenates JS files.
-* Compiles Sass files and automatically [adds vendor prefixes](https://github.com/ai/autoprefixer).
-* Exports both minified and expanded JS and CSS files with header info.
-* Generates SVG sprites.
-* Generates documentation.
-* Cleans up file directories.
-* Runs Jasmine unit tests and generates reports.
-* Includes a `.travis.yml` file for continuous integration with [TravisCI](https://travis-ci.org).
+- Lints, concatenates, and optimizes JavaScript files.
+- Compiles Sass files and automatically [adds vendor prefixes](https://github.com/ai/autoprefixer).
+- Exports both minified and expanded JavaScript and CSS files with header info.
+- Optimizes SVGs.
+- Generates SVG sprites.
+- Generates documentation.
+- Cleans up file directories.
+- Includes a `.travis.yml` file for continuous integration with [TravisCI](https://travis-ci.org).
 
 [Download Gulp Boilerplate](https://github.com/cferdinandi/gulp-boilerplate/archive/master.zip)
 
-**In This Documentation**
-
-1. [Getting Started](#getting-started)
-2. [File Structure](#file-structure)
-3. [Working with the Source Files](#working-with-the-source-files)
-4. [Options & Settings](#options-and-settings)
-5. [Continuous Integration](#continuous-integration)
-6. [License](#license)
 
 ## Getting Started
 
 ### Dependencies
 Make sure these are installed first.
 
-* [Node.js](http://nodejs.org)
-* [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
+- [Node.js](http://nodejs.org)
+- [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
 
 ### Quick Start
 
 1. In bash/terminal/command line, `cd` into your project directory.
 2. Run `npm install` to install required files.
 3. When it's done installing, run one of the task runners to get going:
-	* `gulp` manually compiles files and runs unit tests.
-	* `gulp watch` automatically compiles files, runs unit tests, and applies changes using [LiveReload](http://livereload.com/).
-	* `gulp test` compiles files and runs unit tests.
+	- `gulp` manually compiles files.
+	- `gulp watch` automatically compiles files and applies changes using [LiveReload](http://livereload.com/).
 
 
 
@@ -45,9 +36,10 @@ Make sure these are installed first.
 
 Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into `dist`.
 
-* Content in subdirectories under the `js` folder will be concatenated. For example, files in `js/detects` will compile into `detects.js`. Files directly under `js` will compile individually.
-* Files in the `img` directory will be copied as-is into the `dist/img` directory.
-* SVG files placed in the `src/svg` directory will be optimized and compiled into the `dist/svg` directory. SVG files placed in a subdirectory of `src/svg` will be compiled into a single SVG sprite named after the subdirectory.
+- Content in subdirectories under the `js` folder will be concatenated. For example, files in `js/detects` will compile into `detects.js`. Files directly under `js` will compile individually.
+- Files in the `img` directory will be copied as-is into the `dist/img` directory.
+- SVG files placed in the `src/svg` directory will be optimized and compiled into the `dist/svg` directory. SVG files placed in a subdirectory of `src/svg` will be compiled into a single SVG sprite named after the subdirectory.
+- Files placed in the `static` directory will be copied as-in into the `dist` directory.
 
 ```
 gulp-boilerplate/
@@ -91,20 +83,14 @@ gulp-boilerplate/
 |   |   |   |—— myplugin.scss
 |   |—— img/
 |   |   |—— # static files and folders
+|   |—— static/
+|   |   |—— # static files
 |   |—— svg/
 |   |   |—— # svgs
-|—— test/
-|   |—— coverage/
-|   |   |—— various files
-|   |—— results/
-|   |   |—— unit-tests.html
-|   |—— spec/
-|   |   |—— spec-myplugin.js
 |—— .travis.yml
 |—— gulfile.js
 |—— package.json
 |—— README.md
-|—— README-TEMPLATE.md
 ```
 
 
@@ -119,13 +105,7 @@ Sass files are located in `src` > `sass`. Gulp generates minified and unminified
 
 JavaScript files are located in the `src` > `js` directory.
 
-Files placed directly in the js folder will compile directly to `dist` > `js` as both minified and unminified files. Files placed in subdirectories will also be concatenated into a single file. For example, files in `js/detects` will compile into `detects.js`. Files directly under `js` will compile individually.
-
-#### Unit Testing
-
-Gulp Boilerplate is set up for unit testing with [Jasmine](http://jasmine.github.io/2.0/introduction.html). Add your tests to `test/spec/spec-myplugin.js`. Adjust filenames and references as needed.
-
-Unit test results are printed in terminal, but you can also view them in a browser under `test/results/unit-tests.html`. Get a report of how much of your scripts is covered by testing under `test/coverage`.
+Files placed directly in the `js` folder will compile directly to `dist` > `js` as both minified and unminified files. Files placed in subdirectories will also be concatenated into a single file. For example, files in `js/detects` will compile into `detects.js`. Files directly under `js` will compile individually.
 
 ### Images
 
@@ -186,13 +166,6 @@ var paths = {
         input: 'src/static/*',
         output: 'dist/'
     },
-    test: {
-        input: 'src/js/**/*.js',
-        karma: 'test/karma.conf.js',
-        spec: 'test/spec/**/*.js',
-        coverage: 'test/coverage/',
-        results: 'test/results/'
-    },
     docs: {
         input: 'src/docs/*.{html,md,markdown}',
         output: 'docs/',
@@ -223,9 +196,11 @@ After you have signed up and connected your repository you will be given options
 Then in the `Configure Test Pipelines` box replace `grunt test` with `gulp test.` Save your settings and make
 a commit to your repository. Codeship should then build and test your repository successfully.
 
+
+
 ## How to Contribute
 
-In lieu of a formal style guide, take care to maintain the existing coding style. Please apply fixes to both the development and production code. Don't forget to update the version number, and when applicable, the documentation.
+Please review the  [contributing guidelines](CONTRIBUTING.md).
 
 
 
