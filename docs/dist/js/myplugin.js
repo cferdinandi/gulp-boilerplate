@@ -1,6 +1,6 @@
 /*!
- * gulp-boilerplate v4.2.3: My Gulp.js boilerplate for creating new web projects
- * (c) 2016 Chris Ferdinandi
+ * gulp-boilerplate v5.0.0: My Gulp.js boilerplate for creating new web projects
+ * (c) 2017 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/Plugin
  */
@@ -13,7 +13,7 @@
 	} else {
 		root.myPlugin = factory(root);
 	}
-})(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
+})(typeof global !== 'undefined' ? global : this.window || this.global, (function (root) {
 
 	'use strict';
 
@@ -207,10 +207,10 @@
 	 */
 	var eventThrottler = function () {
 		if ( !eventTimeout ) {
-			eventTimeout = setTimeout(function() {
+			eventTimeout = setTimeout((function() {
 				eventTimeout = null;
 				actualMethod( settings );
-			}, 66);
+			}), 66);
 		}
 	};
 
@@ -270,4 +270,4 @@
 
 	return myPlugin;
 
-});
+}));
