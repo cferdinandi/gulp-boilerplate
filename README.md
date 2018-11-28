@@ -1,208 +1,199 @@
-# [DEPRECATED] Gulp Boilerplate [![Build Status](https://travis-ci.org/cferdinandi/gulp-boilerplate.svg)](https://travis-ci.org/cferdinandi/gulp-boilerplate)
+# Gulp Boilerplate [![Build Status](https://travis-ci.org/cferdinandi/gulp-boilerplate.svg)](https://travis-ci.org/cferdinandi/gulp-boilerplate)
 
-*__Deprecation Notice:__ I simply don't keep this update and don't have the time to do so. As such, I'm deprecating this project. Feel free to fork and update as needed.*
+A boilerplate for building web projects with [Gulp](https://gulpjs.com/). Uses Gulp 4.x.
 
-My boilerplate for creating new web projects with [Gulp.js](http://gulpjs.com/). Forked from [Todd Motto's GulpOSS](https://github.com/toddmotto/gulp-oss) with some additions from [Mark Goodyear and Big Bite Creative](https://github.com/bigbitecreative/base) and various tutorials around the web.
+**Features**
 
-- Lints, concatenates, and optimizes JavaScript files.
-- Compiles Sass files and automatically [adds vendor prefixes](https://github.com/ai/autoprefixer).
-- Exports both minified and expanded JavaScript and CSS files with header info.
-- Optimizes SVGs.
-- Generates SVG sprites.
-- Generates documentation.
-- Cleans up file directories.
-- Includes a `.travis.yml` file for continuous integration with [TravisCI](https://travis-ci.org).
+- Minify, concatenate, and lint JavaScript.
+- Compile, minify, and lint Sass.
+- Autoprefix CSS.
+- Optimize SVGs.
+- Copy static files and folders into your `dist` directory.
+- Automatically add headers and project details to files.
+- Create polyfilled and non-polyfilled versions of JS files.
+- Watch for file changes, and automatically recompile build and reload webpages.
 
-[Download Gulp Boilerplate](https://github.com/cferdinandi/gulp-boilerplate/archive/master.zip)
+**Gulp Boilerplate makes it easy to turn features on and off**, so you can reuse it for all of your projects without having to delete or modify tasks.
+
 
 
 ## Getting Started
 
 ### Dependencies
+
+*__Note:__ if you've previously installed Gulp globally, run `npm rm --global gulp` to remove it. [Details here.](https://medium.com/gulpjs/gulp-sips-command-line-interface-e53411d4467)*
+
 Make sure these are installed first.
 
 - [Node.js](http://nodejs.org)
-- [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
+- [Gulp Command Line Utility](http://gulpjs.com) `npm install --global gulp-cli`
 
 ### Quick Start
 
 1. In bash/terminal/command line, `cd` into your project directory.
-2. Run `npm install` to install required files.
+2. Run `npm install` to install required files and dependencies.
 3. When it's done installing, run one of the task runners to get going:
 	- `gulp` manually compiles files.
-	- `gulp watch` automatically compiles files and applies changes using [LiveReload](http://livereload.com/).
+	- `gulp watch` automatically compiles files and applies changes using [BrowserSync](https://browsersync.io/) when you make changes to your source files.
+
+**Try it out.** After installing, run `gulp` to compile some test files into the `dist` directory. Or, run `gulp watch` and make some changes to see them recompile automatically.
 
 
 
-## File Structure
+## Documentation
 
-Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into `dist`.
+Add your source files to the appropriate `src` subdirectories. Gulp will process and and compile them into `dist`.
 
-- Content in subdirectories under the `js` folder will be concatenated. For example, files in `js/detects` will compile into `detects.js`. Files directly under `js` will compile individually.
-- Files in the `img` directory will be copied as-is into the `dist/img` directory.
-- SVG files placed in the `src/svg` directory will be optimized and compiled into the `dist/svg` directory. SVG files placed in a subdirectory of `src/svg` will be compiled into a single SVG sprite named after the subdirectory.
-- Files placed in the `static` directory will be copied as-in into the `dist` directory.
+- JavaScript files in the `src/js` directory will be compiled to `dist/js`. Files in subdirectories under the `js` folder will be concatenated. For example, files in `js/detects` will compile into `detects.js`.
+- Files in the `dist/sass` directory will be compiled to `src/css`.
+- SVG files placed in the `src/svg` directory will be optimized with SVGO and compiled into `dist/svg`.
+- Files and folders placed in the `copy` directory will be copied as-in into the `dist` directory.
 
+### package.json
+
+The `package.json` file holds all of the details about your project.
+
+Some information is automatically pulled in from it and added to a header that's injected into the top of your JavaScript and CSS files.
+
+```json
+{
+	"name": "project-name",
+	"version": "0.0.1",
+	"description": "A description for your project.",
+	"main": "./dist/your-main-js-file.js",
+	"author": {
+		"name": "YOUR NAME",
+		"url": "http://link-to-your-website.com"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "http://link-to-your-git-repo.com"
+	},
+	"devDependencies": {
+		// The dependencies Gulp uses
+		// Don't change these or you'll break things
+	}
+}
 ```
-gulp-boilerplate/
-|—— dist/
-|   |—— css/
-|   |   |—— myplugin.css
-|   |   |—— myplugin.min.css
-|   |—— img/
-|   |   |—— # image files
-|   |—— js/
-|   |   |—— classList.js
-|   |   |—— classList.min.js
-|   |   |—— myplugin.js
-|   |   |—— myplugin.min.js
-|   |—— svg/
-|   |   |—— icons.svg
-|   |—— # static assets
-|—— docs/
-|   |—— assets/
-|   |—— dist/
-|   |—— index.html
-|   |—— # other docs
-|—— src/
-|   |—— docs/
-|   |   |—— _templates/
-|   |   |   |—— _header.html
-|   |   |   |—— _footer.html
-|   |   |—— assets/
-|   |   |   |—— # doc-specific assets
-|   |   |—— index.html
-|   |   |—— # other docs
-|   |—— img/
-|   |   |—— # image files
-|   |—— js/
-|   |   |—— classList.js
-|   |   |—— myplugin.js
-|   |—— sass/
-|   |   |—— _config.scss
-|   |   |—— _mixins.scss
-|   |   |—— components/
-|   |   |   |—— myplugin.scss
-|   |—— img/
-|   |   |—— # static files and folders
-|   |—— static/
-|   |   |—— # static files
-|   |—— svg/
-|   |   |—— # svgs
-|—— .travis.yml
-|—— gulfile.js
-|—— package.json
-|—— README.md
-```
-
-
-
-## Working with the Source Files
-
-### Sass
-
-Sass files are located in `src` > `sass`. Gulp generates minified and unminified CSS files. It also includes [autoprefixer](https://github.com/postcss/autoprefixer), which adds vendor prefixes for you if required by the last two versions of a browser.
 
 ### JavaScript
 
-JavaScript files are located in the `src` > `js` directory.
+Put your JavaScript files in the `src/js` directory.
 
-Files placed directly in the `js` folder will compile directly to `dist` > `js` as both minified and unminified files. Files placed in subdirectories will also be concatenated into a single file. For example, files in `js/detects` will compile into `detects.js`. Files directly under `js` will compile individually.
+Files placed directly in the `js` folder will compile directly to `dist/js` as both minified and unminified files. Files placed in subdirectories under `src/js` will also be concatenated into a single file. For example, files in `js/detects` will compile into `detects.js`.
 
-### Images
+*__A note about polyfills:__ In subdirectories that contain files with the `.polyfill.js` suffix (for example, `_matches.polyfill.js`), two versions will be created: one with the polyfill files, and one without.*
 
-Image files placed in the `src` > `img` directory will be copied as-is into the `dist` > `img` directory. While you can add image optimization processes to Gulp, I find that tools like [ImageOptim](https://imageoptim.com/) and [b64.io](http://b64.io/) do a better job.
+### Sass
 
-### Static Files
+Put your [Sass](https://sass-lang.com/) files in the `src/sass` directory.
 
-Files and folders placed in the `src` > `static` directory will be copied as-is into the `dist` directory.
+Gulp generates minified and unminified CSS files. It also includes [autoprefixer](https://github.com/postcss/autoprefixer), which adds vendor prefixes for you.
 
 ### SVGs
 
-SVG files placed in the `src/svg` directory will be optimized with SVGO and compiled into `dist/svg` as-is.
+Place SVG files in the `src/svg` directory.
 
-SVG files placed in subdirectories of `src/svg` will be ocmpiled into a single SVG sprite named after the parent directory. For example, files in `src/svg/icons` would compile into a single `icons.svg` file.
+SVG files will be optimized with [SVGO](https://github.com/svg/svgo) and compiled into `dist/svg`.
 
-### Documentation
+### Copy Files
 
-Add HTML or markdown (`.md` or `.markdown`) files to your `docs` folder in `src`.
+Files and folders placed in the `src/copy` directory will be copied as-is into `dist`.
 
-The `_templates` directory in `src` contains the `_header.html` and `_footer.html` templates. These are automatically added to the beginning and end of each documentation page. You can also add your own templates to the `_templates` directory. Include template files in your docs by writing `@@include('path-to-file')` on its own line in your markup (or markdown).
-
-Files placed in the `assets` directory will be moved over as-is to the `docs` directory. The boilerplate will also add a copy of your `dist` files so you can use them in your documentation.
+This is a great place to put HTML files, images, and pre-compiled assets.
 
 
 
-## Options and Settings
+## Options & Settings
 
-### Updating Project Details
-Open up `package.json` to change the name, version, URL and other data about the project.
+Gulp Boilerplate makes it easy to customize for projects without having to delete or modify tasks.
 
-### Changing the Header
-Inside `gulpfile.js`, `banner.full` is the expanded header, while `banner.min` is included with minified content.
+Options and settings are located at the top of the `gulpfile.js`.
 
-### Changing the Directory Structure
-Inside `gulpfile.js` you'll see a variable named `paths`. Adjust the paths to suit your workflow.
+### Settings
+
+Set features under the `settings` variable to `true` to turn them on (default), and `false` to turn them off.
 
 ```js
-var paths = {
-    input: 'src/**/*',
-    output: 'dist/',
-    scripts: {
-        input: 'src/js/*',
-        output: 'dist/js/'
-    },
-    styles: {
-        input: 'src/sass/**/*.{scss,sass}',
-        output: 'dist/css/'
-    },
-    svgs: {
-        input: 'src/svg/*',
-        output: 'dist/svg/'
-    },
-    images: {
-        input: 'src/img/*',
-        output: 'dist/img/'
-    },
-    static: {
-        input: 'src/static/*',
-        output: 'dist/'
-    },
-    docs: {
-        input: 'src/docs/*.{html,md,markdown}',
-        output: 'docs/',
-        templates: 'src/docs/_templates/',
-        assets: 'src/docs/assets/**'
-    }
+/**
+ * Settings
+ * Turn on/off build features
+ */
+
+var settings = {
+	clean: true,
+	scripts: true,
+	polyfills: true,
+	styles: true,
+	svgs: true,
+	copy: true,
+	reload: true
 };
 ```
 
+### Paths
 
+Adjust the `input` and `output` paths for all of the Gulp tasks under the `paths` variable. Paths are relative to the root project folder.
 
-## Continuous Integration
+```js
+/**
+ * Paths to project folders
+ */
 
-### Travis CI
+var paths = {
+	input: 'src/',
+	output: 'dist/',
+	scripts: {
+		input: 'src/js/*',
+		// polyfills: '!src/js/*.polyfill.js',
+		polyfills: '.polyfill.js',
+		output: 'dist/js/'
+	},
+	styles: {
+		input: 'src/sass/**/*.{scss,sass}',
+		output: 'dist/css/'
+	},
+	svgs: {
+		input: 'src/svg/*.svg',
+		output: 'dist/svg/'
+	},
+	copy: {
+		input: 'src/copy/*',
+		output: 'dist/'
+	}
+};
+```
 
-This boilerplate includes a configuration file for [Travis CI](http://docs.travis-ci.com/user/getting-started/), a continuous integration service for GitHub.
+### Header
 
-If you sign-up and activate it for your repository, Travis CI will run your build and execute any processes to make sure everything is working as expected. This is particularly useful when working with a team or managing open source projects with multiple contributors.
+Gulp auto-injects a header into all of your JavaScript and CSS files with details from your `package.json` file.
 
-The `.travis.yml` file is pre-configured for the boilerplate's build system. Even if you add files or update the Gulp tasks, you shouldn't need to change anything for it to work.
+Unminified versions get a fat header, while minified files get a one-liner. You can change what's included under the `banner` variable.
 
-### Codeship
+```js
+/**
+ * Template for banner to add to file headers
+ */
 
-This boilerplate also works with [Codeship.io](https://codeship.com/).
-
-After you have signed up and connected your repository you will be given options for configuring your tests. In the dropdown labeled `Select your technology to prepopulate basic commands` choose `node.js.` This will cause codeship to run npm install prior to running your tests.
-
-Then in the `Configure Test Pipelines` box replace `grunt test` with `gulp test.` Save your settings and make
-a commit to your repository. Codeship should then build and test your repository successfully.
-
-
-
-## How to Contribute
-
-Please review the  [contributing guidelines](CONTRIBUTING.md).
+var banner = {
+	full:
+		'/*!\n' +
+		' * <%= package.name %> v<%= package.version %>\n' +
+		' * <%= package.description %>\n' +
+		' * (c) ' + new Date().getFullYear() + ' <%= package.author.name %>\n' +
+		' * <%= package.license %> License\n' +
+		' * <%= package.repository.url %>\n' +
+		' */\n\n',
+	min:
+		'/*!' +
+		' <%= package.name %> v<%= package.version %>' +
+		' | (c) ' + new Date().getFullYear() + ' <%= package.author.name %>' +
+		' | <%= package.license %> License' +
+		' | <%= package.repository.url %>' +
+		' */\n'
+};
+```
 
 
 
