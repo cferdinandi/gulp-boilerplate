@@ -4,12 +4,11 @@ A boilerplate for building web projects with [Gulp](https://gulpjs.com/). Uses G
 
 **Features**
 
-- Minify, concatenate, and lint JavaScript.
-- Compile, minify, and lint Sass.
-- Autoprefix CSS.
+- Concatenate, minify, and lint JavaScript.
+- Compile, minify, autoprefix, and lint Sass.
 - Optimize SVGs.
 - Copy static files and folders into your `dist` directory.
-- Automatically add headers and project details to files.
+- Automatically add headers and project details to JS and CSS files.
 - Create polyfilled and non-polyfilled versions of JS files.
 - Watch for file changes, and automatically recompile build and reload webpages.
 
