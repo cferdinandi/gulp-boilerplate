@@ -69,9 +69,12 @@ Some information is automatically pulled in from it and added to a header that's
 	"repository": {
 		"type": "git",
 		"url": "http://link-to-your-git-repo.com"
-	}
+	},
+	"devDependencies": {}
 }
 ```
+
+*__Note:__ `devDependencies` are the dependencies Gulp uses. Don't change these or you'll break things.*
 
 ### JavaScript
 
