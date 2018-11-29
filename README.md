@@ -159,7 +159,8 @@ var paths = {
 	copy: {
 		input: 'src/copy/*',
 		output: 'dist/'
-	}
+	},
+	reload: './dist/'
 };
 ```
 

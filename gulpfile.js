@@ -38,7 +38,8 @@ var paths = {
 	copy: {
 		input: 'src/copy/*',
 		output: 'dist/'
-	}
+	},
+	reload: './dist/'
 };
 
 
@@ -266,7 +267,7 @@ var startServer = function (done) {
 	// Initialize BrowserSync
 	browserSync.init({
 		server: {
-			baseDir: './' + paths.output
+			baseDir: paths.reload
 		}
 	});
 
