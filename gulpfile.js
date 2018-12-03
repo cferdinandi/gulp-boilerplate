@@ -23,7 +23,6 @@ var paths = {
 	output: 'dist/',
 	scripts: {
 		input: 'src/js/*',
-		// polyfills: '!src/js/*.polyfill.js',
 		polyfills: '.polyfill.js',
 		output: 'dist/js/'
 	},
@@ -36,7 +35,7 @@ var paths = {
 		output: 'dist/svg/'
 	},
 	copy: {
-		input: 'src/copy/*',
+		input: 'src/copy/**/*',
 		output: 'dist/'
 	},
 	reload: './dist/'
