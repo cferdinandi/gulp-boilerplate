@@ -44,7 +44,7 @@ Make sure these are installed first.
 Add your source files to the appropriate `src` subdirectories. Gulp will process and and compile them into `dist`.
 
 - JavaScript files in the `src/js` directory will be compiled to `dist/js`. Files in subdirectories under the `js` folder will be concatenated. For example, files in `js/detects` will compile into `detects.js`.
-- Files in the `dist/sass` directory will be compiled to `src/css`.
+- Files in the `src/sass` directory will be compiled to `dist/css`.
 - SVG files placed in the `src/svg` directory will be optimized with SVGO and compiled into `dist/svg`.
 - Files and folders placed in the `copy` directory will be copied as-in into the `dist` directory.
 
