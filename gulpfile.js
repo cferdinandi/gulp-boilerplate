@@ -135,7 +135,7 @@ var buildScripts = function (done) {
 	if (!settings.scripts) return done();
 
 	// Run tasks on script files
-	src(paths.scripts.input)
+	return src(paths.scripts.input)
 		.pipe(flatmap(function(stream, file) {
 
 			// If the file is a directory
@@ -172,9 +172,6 @@ var buildScripts = function (done) {
 
 		}));
 
-	// Signal completion
-	done();
-
 };
 
 // Lint scripts
@@ -184,12 +181,9 @@ var lintScripts = function (done) {
 	if (!settings.scripts) return done();
 
 	// Lint scripts
-	src(paths.scripts.input)
+	return src(paths.scripts.input)
 		.pipe(jshint())
 		.pipe(jshint.reporter('jshint-stylish'));
-
-	// Signal completion
-	done();
 
 };
 
@@ -200,7 +194,7 @@ var buildStyles = function (done) {
 	if (!settings.styles) return done();
 
 	// Run tasks on all Sass files
-	src(paths.styles.input)
+	return src(paths.styles.input)
 		.pipe(sass({
 			outputStyle: 'expanded',
 			sourceComments: true
@@ -221,9 +215,6 @@ var buildStyles = function (done) {
 		.pipe(header(banner.min, { package : package }))
 		.pipe(dest(paths.styles.output));
 
-	// Signal completion
-	done();
-
 };
 
 // Optimize SVG files
@@ -233,12 +224,9 @@ var buildSVGs = function (done) {
 	if (!settings.svgs) return done();
 
 	// Optimize SVG files
-	src(paths.svgs.input)
+	return src(paths.svgs.input)
 		.pipe(svgmin())
 		.pipe(dest(paths.svgs.output));
-
-	// Signal completion
-	done();
 
 };
 
@@ -249,11 +237,8 @@ var copyFiles = function (done) {
 	if (!settings.copy) return done();
 
 	// Copy static files
-	src(paths.copy.input)
+	return src(paths.copy.input)
 		.pipe(dest(paths.copy.output));
-
-	// Signal completion
-	done();
 
 };
 
