@@ -12,6 +12,12 @@
 		"type": "git",
 		"url": "http://link-to-your-git-repo.com"
 	},
+	"boilerplate": {
+		"version": "2.0.1",
+		"author": "Chris Ferdinandi",
+		"url": "https://gomakethings.com",
+		"repo": "http://github.com/cferdinandi/gulp-boilerplate"
+	},
 	"devDependencies": {
 		"gulp": "4.0.2",
 		"del": "3.0.0",
