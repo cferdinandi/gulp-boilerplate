@@ -1,40 +1,46 @@
 {
-	"name": "project-name",
-	"version": "0.0.1",
-	"description": "A description for your project.",
-	"main": "./dist/your-main-js-file.js",
-	"author": {
-		"name": "YOUR NAME",
-		"url": "http://link-to-your-website.com"
-	},
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "http://link-to-your-git-repo.com"
-	},
-	"boilerplate": {
-		"version": "2.2.3",
-		"author": "Chris Ferdinandi",
-		"url": "https://gomakethings.com",
-		"repo": "http://github.com/cferdinandi/gulp-boilerplate"
-	},
-	"devDependencies": {
-		"gulp": "4.0.2",
-		"del": "3.0.0",
-		"lazypipe": "1.0.1",
-		"gulp-flatmap": "1.0.2",
-		"gulp-header": "2.0.5",
-		"gulp-rename": "1.4.0",
-		"jshint": "2.9.6",
-		"gulp-jshint": "2.1.0",
-		"jshint-stylish": "2.2.1",
-		"gulp-concat": "2.6.1",
-		"gulp-terser": "1.1.7",
-		"gulp-optimize-js": "1.1.0",
-		"gulp-sass": "4.0.2",
-		"gulp-cssnano": "2.1.3",
-		"gulp-autoprefixer": "6.0.0",
-		"gulp-svgmin": "2.1.0",
-		"browser-sync": "2.26.3"
-	}
+  "name": "project-name",
+  "version": "0.0.1",
+  "description": "A description for your project.",
+  "main": "./dist/your-main-js-file.js",
+  "author": {
+    "name": "YOUR NAME",
+    "url": "http://link-to-your-website.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://link-to-your-git-repo.com"
+  },
+  "boilerplate": {
+    "version": "2.2.3",
+    "author": "Chris Ferdinandi",
+    "url": "https://gomakethings.com",
+    "repo": "http://github.com/cferdinandi/gulp-boilerplate"
+  },
+  "devDependencies": {
+    "browserlist": "^1.0.1",
+    "gulp": "4.0.2",
+    "del": "3.0.0",
+    "lazypipe": "1.0.1",
+    "gulp-flatmap": "1.0.2",
+    "gulp-header": "2.0.5",
+    "gulp-rename": "1.4.0",
+    "jshint": "2.9.6",
+    "gulp-jshint": "2.1.0",
+    "jshint-stylish": "2.2.1",
+    "gulp-concat": "2.6.1",
+    "gulp-terser": "1.1.7",
+    "gulp-optimize-js": "1.1.0",
+    "gulp-sass": "4.0.2",
+    "gulp-cssnano": "2.1.3",
+    "gulp-autoprefixer": "6.0.0",
+    "gulp-svgmin": "2.1.0",
+    "browser-sync": "2.26.3"
+  },
+  "browserslist": [
+    "> 0.25%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
