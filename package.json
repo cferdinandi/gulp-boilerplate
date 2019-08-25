@@ -19,7 +19,6 @@
 		"repo": "http://github.com/cferdinandi/gulp-boilerplate"
 	},
 	"devDependencies": {
-		"browserlist": "^1.0.1",
 		"gulp": "4.0.2",
 		"del": "3.0.0",
 		"lazypipe": "1.0.1",
@@ -37,10 +36,5 @@
 		"gulp-autoprefixer": "6.0.0",
 		"gulp-svgmin": "2.1.0",
 		"browser-sync": "2.26.3"
-	},
-	"browserslist": [
-		"> 0.25%",
-		"last 2 versions",
-		"not ie <= 8"
-	]
+	}
 }
