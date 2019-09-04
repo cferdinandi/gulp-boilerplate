@@ -35,6 +35,6 @@
 		"gulp-cssnano": "2.1.3",
 		"gulp-autoprefixer": "6.0.0",
 		"gulp-svgmin": "2.1.0",
-		"browser-sync": "2.26.3"
+		"browser-sync": "2.26.7"
 	}
 }
