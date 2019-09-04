@@ -87,8 +87,9 @@ var optimizejs = require('gulp-optimize-js');
 
 // Styles
 var sass = require('gulp-sass');
-var prefix = require('gulp-autoprefixer');
-var minify = require('gulp-cssnano');
+var postcss = require('gulp-postcss');
+var prefix = require('autoprefixer');
+var minify = require('cssnano');
 
 // SVGs
 var svgmin = require('gulp-svgmin');
@@ -199,20 +200,32 @@ var buildStyles = function (done) {
 			outputStyle: 'expanded',
 			sourceComments: true
 		}))
-		.pipe(prefix({
-			browsers: ['last 2 version', '> 0.25%'],
-			cascade: true,
-			remove: true
-		}))
-		.pipe(header(banner.full, { package : package }))
+		// .pipe(prefix({
+		// 	cascade: true,
+		// 	remove: true
+		// }))
+		.pipe(postcss([
+			prefix({
+				cascade: true,
+				remove: true
+			})
+		]))
+		.pipe(header(banner.full, {package: package}))
 		.pipe(dest(paths.styles.output))
 		.pipe(rename({suffix: '.min'}))
-		.pipe(minify({
-			discardComments: {
-				removeAll: true
-			}
-		}))
-		.pipe(header(banner.min, { package : package }))
+		.pipe(postcss([
+			minify({
+				discardComments: {
+					removeAll: true
+				}
+			})
+		]))
+		// .pipe(minify({
+		// 	discardComments: {
+		// 		removeAll: true
+		// 	}
+		// }))
+		.pipe(header(banner.min, {package: package}))
 		.pipe(dest(paths.styles.output));
 
 };
