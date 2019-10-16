@@ -13,7 +13,7 @@
 		"url": "http://link-to-your-git-repo.com"
 	},
 	"boilerplate": {
-		"version": "2.2.4",
+		"version": "2.2.5",
 		"author": "Chris Ferdinandi",
 		"url": "https://gomakethings.com",
 		"repo": "http://github.com/cferdinandi/gulp-boilerplate"

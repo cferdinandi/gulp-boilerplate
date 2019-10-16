@@ -120,7 +120,7 @@ var cleanDist = function (done) {
 
 // Repeated JavaScript tasks
 var jsTasks = lazypipe()
-	.pipe(header, banner.full, {package: package})
+	.pipe(header, banner.min, {package: package})
 	.pipe(optimizejs)
 	.pipe(dest, paths.scripts.output)
 	.pipe(rename, {suffix: '.min'})
@@ -200,17 +200,13 @@ var buildStyles = function (done) {
 			outputStyle: 'expanded',
 			sourceComments: true
 		}))
-		// .pipe(prefix({
-		// 	cascade: true,
-		// 	remove: true
-		// }))
 		.pipe(postcss([
 			prefix({
 				cascade: true,
 				remove: true
 			})
 		]))
-		.pipe(header(banner.full, {package: package}))
+		.pipe(header(banner.min, {package: package}))
 		.pipe(dest(paths.styles.output))
 		.pipe(rename({suffix: '.min'}))
 		.pipe(postcss([
@@ -220,12 +216,6 @@ var buildStyles = function (done) {
 				}
 			})
 		]))
-		// .pipe(minify({
-		// 	discardComments: {
-		// 		removeAll: true
-		// 	}
-		// }))
-		.pipe(header(banner.min, {package: package}))
 		.pipe(dest(paths.styles.output));
 
 };
