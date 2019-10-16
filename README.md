@@ -168,7 +168,7 @@ var paths = {
 
 Gulp auto-injects a header into all of your JavaScript and CSS files with details from your `package.json` file.
 
-Unminified versions get a fat header, while minified files get a one-liner. You can change what's included under the `banner` variable.
+You can change what's included under the `banner` variable.
 
 ```js
 /**
