@@ -73,7 +73,7 @@ Some information is automatically pulled in from it and added to a header that's
 }
 ```
 
-*__Note:__ `devDependencies` are the dependencies Gulp uses. Don't change these or you'll break things. If any of the other lines are removed, make sure to remove reference to them under "var banner" in gulpfile.js or gulp watch won't run.*
+*__Note:__ `devDependencies` are the dependencies Gulp uses. Don't change these or you'll break things. If any of the other fields are removed, make sure to remove reference to them under "var banner" in gulpfile.js or gulp watch won't run.*
 
 ### JavaScript
 
