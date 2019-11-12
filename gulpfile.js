@@ -32,7 +32,7 @@ var paths = {
 	},
 	svgs: {
 		input: 'src/svg/*.svg',
-		output: 'dist/images/'
+		output: 'dist/svg/'
 	},
 	copy: {
 		input: 'src/copy/**/*',
