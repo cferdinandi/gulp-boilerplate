@@ -13,7 +13,7 @@
 		"url": "http://link-to-your-git-repo.com"
 	},
 	"boilerplate": {
-		"version": "2.2.5",
+		"version": "2.2.6",
 		"author": "Chris Ferdinandi",
 		"url": "https://gomakethings.com",
 		"repo": "http://github.com/cferdinandi/gulp-boilerplate"
@@ -23,6 +23,7 @@
 		"> 0.25%"
 	],
 	"devDependencies": {
+		"node-sass": "4.13.0",
 		"gulp": "4.0.2",
 		"del": "3.0.0",
 		"lazypipe": "1.0.1",
