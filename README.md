@@ -93,7 +93,7 @@ Gulp generates minified and unminified CSS files. It also includes [autoprefixer
 
 Place SVG files in the `src/svg` directory.
 
-SVG files will be optimized with [SVGO](https://github.com/svg/svgo) and compiled into `dist/svg`.
+SVG files will be optimized with [SVGO](https://github.com/svg/svgo) and compiled into `dist/images`.
 
 ### Copy Files
 
