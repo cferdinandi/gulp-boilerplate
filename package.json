@@ -43,5 +43,6 @@
 		"gulp-svgmin": "2.1.0",
 		"browser-sync": "2.26.7",
 		"gulp-purgecss": "1.2.0",
+		"gulp-if": "3.0.0"
 	}
 }
