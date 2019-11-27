@@ -1,4 +1,42 @@
 /**
+ * Gulp Packages
+ */
+
+// General
+var {gulp, src, dest, watch, series, parallel} = require('gulp');
+var del = require('del');
+var flatmap = require('gulp-flatmap');
+var lazypipe = require('lazypipe');
+var rename = require('gulp-rename');
+var header = require('gulp-header');
+var package = require('./package.json');
+var gulpif = require('gulp-if');
+var gutil = require('gulp-util');
+
+// Scripts
+var jshint = require('gulp-jshint');
+var stylish = require('jshint-stylish');
+var concat = require('gulp-concat');
+var uglify = require('gulp-terser');
+var optimizejs = require('gulp-optimize-js');
+
+// Styles
+var sass = require('gulp-sass');
+var postcss = require('gulp-postcss');
+var prefix = require('autoprefixer');
+var minify = require('cssnano');
+
+// Purge CSS
+var purgecss = require('gulp-purgecss')
+
+// SVGs
+var svgmin = require('gulp-svgmin');
+
+// BrowserSync
+var browserSync = require('browser-sync');
+
+
+/**
  * Settings
  * Turn on/off build features
  */
@@ -10,7 +48,8 @@ var settings = {
 	styles: true,
 	svgs: true,
 	copy: true,
-	reload: true
+	reload: true,
+	purge: false
 };
 
 
@@ -41,6 +80,20 @@ var paths = {
 	reload: './dist/'
 };
 
+/**
+ * Paths to files for PurgeCSS
+ */
+var purgePipe = lazypipe()
+	.pipe(purgecss, {
+		content: [
+			// Add files below that use or affect your CSS. These are analysed by PurgeCSS to see what CSS is or isn't used.
+			// E.g. paths.copy.output + 'dist/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
+			paths.copy.output + '**/*.html',
+			paths.scripts.output + '**/*.js',
+		]
+	});
+
+
 
 /**
  * Template for banner to add to file headers
@@ -55,39 +108,6 @@ var banner = {
 		' | <%= package.repository.url %>' +
 		' */\n'
 };
-
-
-/**
- * Gulp Packages
- */
-
-// General
-var {gulp, src, dest, watch, series, parallel} = require('gulp');
-var del = require('del');
-var flatmap = require('gulp-flatmap');
-var lazypipe = require('lazypipe');
-var rename = require('gulp-rename');
-var header = require('gulp-header');
-var package = require('./package.json');
-
-// Scripts
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
-var concat = require('gulp-concat');
-var uglify = require('gulp-terser');
-var optimizejs = require('gulp-optimize-js');
-
-// Styles
-var sass = require('gulp-sass');
-var postcss = require('gulp-postcss');
-var prefix = require('autoprefixer');
-var minify = require('cssnano');
-
-// SVGs
-var svgmin = require('gulp-svgmin');
-
-// BrowserSync
-var browserSync = require('browser-sync');
 
 
 /**
@@ -180,7 +200,19 @@ var lintScripts = function (done) {
 
 };
 
-// Process, lint, and minify Sass files
+// Repeating minify CSS tasks
+var cssMin = lazypipe()
+	.pipe(rename, {suffix: '.min'})
+	.pipe(postcss,[
+		minify({
+			discardComments: {
+				removeAll: true
+			}
+		})
+	])
+	.pipe(dest, paths.styles.output);
+
+// Process, lint, purge and minify Sass files
 var buildStyles = function (done) {
 
 	// Make sure this feature is activated before running
@@ -190,7 +222,7 @@ var buildStyles = function (done) {
 	return src(paths.styles.input)
 		.pipe(sass({
 			outputStyle: 'expanded',
-			sourceComments: true
+			sourceComments: false
 		}))
 		.pipe(postcss([
 			prefix({
@@ -200,15 +232,25 @@ var buildStyles = function (done) {
 		]))
 		.pipe(header(banner.main, {package: package}))
 		.pipe(dest(paths.styles.output))
-		.pipe(rename({suffix: '.min'}))
-		.pipe(postcss([
-			minify({
-				discardComments: {
-					removeAll: true
-				}
-			})
-		]))
-		.pipe(dest(paths.styles.output));
+
+		// If PurgeCSS is disabled, minify CSS now
+		.pipe(gulpif(!settings.purge, cssMin()))
+		.pipe(gutil.noop());
+
+};
+
+// Purge CSS of unused content
+var purgeStyles = function (done) {
+
+	// Make sure this feature is activated before running
+	if (!settings.purge) return done();
+
+	// Run PurgeCSS on CSS files
+	return src(paths.styles.output + '*.css', !paths.styles.output + '*.min.css')
+		.pipe(purgePipe())
+		.pipe(dest(paths.styles.output, {overwrite: true}))
+		.pipe(cssMin())
+		.pipe(gutil.noop());
 
 };
 
@@ -283,7 +325,8 @@ exports.default = series(
 		buildStyles,
 		buildSVGs,
 		copyFiles
-	)
+	),
+	purgeStyles
 );
 
 // Watch and reload
