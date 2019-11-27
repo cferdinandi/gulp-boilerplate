@@ -9,6 +9,7 @@ A boilerplate for building web projects with [Gulp](https://gulpjs.com/). Uses G
 - Optimize SVGs.
 - Copy static files and folders into your `dist` directory.
 - Automatically add headers and project details to JS and CSS files.
+- Remove unused CSS.
 - Create polyfilled and non-polyfilled versions of JS files.
 - Watch for file changes, and automatically recompile build and reload webpages.
 
@@ -89,6 +90,14 @@ Put your [Sass](https://sass-lang.com/) files in the `src/sass` directory.
 
 Gulp generates minified and unminified CSS files. It also includes [autoprefixer](https://github.com/postcss/autoprefixer), which adds vendor prefixes for you.
 
+### Purge Unused CSS
+
+Unused CSS can be removed from your CSS files. To enable this feature, set `purge: true` in `gulpfile.js` (default is `false`). Be sure to go to "Paths to files for PurgeCSS" under paths and list any file that uses or affects your CSS.
+
+By default, all .html files from the copy-output folder and all .js files in the scripts-output folder are set to be analysed. You should add any file which uses or influences your CSS. For example, if you have a page which uses style `.foo` on a nav bar and you have a javascript file which changes the nav bar's class to also include `.bar` once the user scrolls down the page, including the javascript file in the list will allow purgecss to analyse it so it can see that this class is used at some point and so won't be incorrectly considered as unused CSS and removed.
+
+It can take a little trial and error to ensure a page has all of the CSS it's meant to have. Often, whitelisting CSS that you want to be included in all circumstances can fix any issues that arise. Adding `/* purgecss start ignore */` before and `/* purgecss end ignore */` after any CSS in your sass files you want kept no matter what is one method of doing this. For more details on this and other methods, please refer to the [PurgeCSS dcoumentation](https://www.purgecss.com/whitelisting).
+
 ### SVGs
 
 Place SVG files in the `src/svg` directory.
@@ -126,7 +135,8 @@ var settings = {
 	styles: true,
 	svgs: true,
 	copy: true,
-	reload: true
+	reload: true,
+	purge: false
 };
 ```
 
@@ -162,6 +172,23 @@ var paths = {
 	},
 	reload: './dist/'
 };
+```
+
+If purging of unused CSS is enabled, set the paths to any file that uses or influences your CSS. By default, it is set to analyse all html files in the copy - output path and all javascipt files in the scripts - output path. It is safe to remove or alter these lines if they are not relevant to your project.
+
+```js
+/**
+ * Paths to files for PurgeCSS
+ */
+var purgePipe = lazypipe()
+	.pipe(purgecss, {
+		content: [
+			// Add files below that use or affect your CSS. These are analysed by PurgeCSS to see what CSS is or isn't used.
+			// E.g. paths.scripts.output + '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
+			paths.copy.output + '**/*.html',
+			paths.scripts.output + '**/*.js',
+		]
+	});
 ```
 
 ### Header
