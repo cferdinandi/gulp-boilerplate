@@ -184,7 +184,7 @@ var purgePipe = lazypipe()
 	.pipe(purgecss, {
 		content: [
 			// Add files below that use or affect your CSS. These are analysed by PurgeCSS to see what CSS is or isn't used.
-			// E.g. paths.scripts.output + '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
+			// E.g. paths.copy.output + 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
 			paths.copy.output + '**/*.html',
 			paths.scripts.output + '**/*.js',
 		]
