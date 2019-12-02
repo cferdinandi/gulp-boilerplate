@@ -133,10 +133,10 @@ var settings = {
 	scripts: true,
 	polyfills: true,
 	styles: true,
+	purge: false,
 	svgs: true,
 	copy: true,
-	reload: true,
-	purge: false
+	reload: true
 };
 ```
 
