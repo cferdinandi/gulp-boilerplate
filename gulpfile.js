@@ -208,7 +208,8 @@ var buildStyles = function (done) {
 				}
 			})
 		]))
-		.pipe(dest(paths.styles.output));
+		.pipe(dest(paths.styles.output))
+		.pipe(browserSync.stream());
 
 };
 
