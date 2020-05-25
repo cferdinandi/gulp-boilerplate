@@ -24,8 +24,8 @@ A boilerplate for building web projects with [Gulp](https://gulpjs.com/). Uses G
 
 Make sure these are installed first.
 
-- [Node.js](http://nodejs.org)
-- [Gulp Command Line Utility](http://gulpjs.com) `npm install --global gulp-cli`
+- [Node.js](https://nodejs.org)
+- [Gulp Command Line Utility](https://gulpjs.com) `npm install --global gulp-cli`
 
 ### Quick Start
 
@@ -62,12 +62,12 @@ Some information is automatically pulled in from it and added to a header that's
 	"main": "./dist/your-main-js-file.js",
 	"author": {
 		"name": "YOUR NAME",
-		"url": "http://link-to-your-website.com"
+		"url": "https://link-to-your-website.com"
 	},
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "http://link-to-your-git-repo.com"
+		"url": "https://link-to-your-git-repo.com"
 	},
 	"devDependencies": {}
 }
