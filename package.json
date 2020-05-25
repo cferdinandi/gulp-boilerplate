@@ -5,18 +5,18 @@
 	"main": "./dist/your-main-js-file.js",
 	"author": {
 		"name": "YOUR NAME",
-		"url": "http://link-to-your-website.com"
+		"url": "https://link-to-your-website.com"
 	},
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "http://link-to-your-git-repo.com"
+		"url": "https://link-to-your-git-repo.com"
 	},
 	"boilerplate": {
 		"version": "2.2.6",
 		"author": "Chris Ferdinandi",
 		"url": "https://gomakethings.com",
-		"repo": "http://github.com/cferdinandi/gulp-boilerplate"
+		"repo": "https://github.com/cferdinandi/gulp-boilerplate"
 	},
 	"browserslist": [
 		"last 2 versions",
