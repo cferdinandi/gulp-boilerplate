@@ -23,7 +23,7 @@
 		"> 0.25%"
 	],
 	"devDependencies": {
-		"node-sass": "4.13.0",
+		"node-sass": "4.13.1",
 		"gulp": "4.0.2",
 		"del": "3.0.0",
 		"lazypipe": "1.0.1",
