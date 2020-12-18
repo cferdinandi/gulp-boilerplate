@@ -52,3 +52,4 @@ const showApp = () => document.getElementById("app").classList.add("loaded");
 // let data = serialForm(form);
 // console.log(data);
 
+var AppData = {};
