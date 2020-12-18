@@ -2,7 +2,7 @@
 function renderData() {
     let para = document.createElement("pre");
     para.textContent = AppData.list;
-    document.querySelector("#out").appendChild(para);
+    document.querySelector("#view").appendChild(para);
 }
 
 function fetchAndDecode(url, type) {
