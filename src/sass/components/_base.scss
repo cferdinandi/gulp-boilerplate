@@ -1,17 +1,54 @@
-/**
- * @section Base Styles
- */
-
+html,
 body {
-	font-size: 125%;
-	margin: 0 auto;
-	max-width: 42em;
-	width: 88%;
+  height: 100vh;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+}
+a,
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none;
+  outline: none;
 }
 
-input,
-textarea,
-select,
-button {
-	font: inherit;
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
+
+#app {
+    opacity: 0;
+}
+
+#app.loaded {
+    -webkit-transition: opacity 0.55s linear;
+    -o-transition: opacity 0.55s linear;
+    transition: opacity 0.55s linear;
+    opacity: 1;
+}
+#main {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.Site {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.Site > .content {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+

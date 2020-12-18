@@ -1,0 +1,1 @@
+console.log('lib/ app2.js');
