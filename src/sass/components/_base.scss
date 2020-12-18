@@ -28,12 +28,13 @@ a:focus {
 }
 
 #app.loaded {
-    -webkit-transition: opacity 0.55s linear;
-    -o-transition: opacity 0.55s linear;
-    transition: opacity 0.55s linear;
+    -webkit-transition: opacity 0.95s linear;
+    -o-transition: opacity 0.95s linear;
+    transition: opacity 0.95s linear;
+    transition-delay: 0.5s;
     opacity: 1;
 }
-#main {
+#app > main {
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
@@ -52,3 +53,15 @@ a:focus {
     overflow-y: auto;
 }
 
+
+
+pre {
+    max-width: 100%;
+    max-height: 80vh;
+    padding: 0.5rem;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: auto;
+    
+}

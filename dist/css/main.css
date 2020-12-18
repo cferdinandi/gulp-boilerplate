@@ -13737,13 +13737,15 @@ a:focus {
 
 /* line 30, src/sass/components/_base.scss */
 #app.loaded {
-  -webkit-transition: opacity 0.55s linear;
-  transition: opacity 0.55s linear;
+  -webkit-transition: opacity 0.95s linear;
+  transition: opacity 0.95s linear;
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
   opacity: 1;
 }
 
-/* line 36, src/sass/components/_base.scss */
-#main {
+/* line 37, src/sass/components/_base.scss */
+#app > main {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -13751,7 +13753,7 @@ a:focus {
   overflow-y: auto;
 }
 
-/* line 41, src/sass/components/_base.scss */
+/* line 42, src/sass/components/_base.scss */
 .Site {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13765,11 +13767,22 @@ a:focus {
   overflow-x: hidden;
 }
 
-/* line 49, src/sass/components/_base.scss */
+/* line 50, src/sass/components/_base.scss */
 .Site > .content {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+/* line 58, src/sass/components/_base.scss */
+pre {
+  max-width: 100%;
+  max-height: 80vh;
+  padding: 0.5rem;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: auto;
 }
