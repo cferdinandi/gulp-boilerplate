@@ -2,6 +2,8 @@
 
 A boilerplate for building web projects with [Gulp](https://gulpjs.com/). Uses Gulp 4.x.
 
+_**IMPORTANT:** This project is no longer maintained, and is offered as-is. It is strongly recommended that you instead use my [Build Tool Boilerplate](https://github.com/cferdinandi/build-tool-boilerplate)._
+
 **Features**
 
 - Concatenate, minify, and lint JavaScript.
